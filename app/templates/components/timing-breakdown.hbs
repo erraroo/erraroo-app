@@ -1,0 +1,54 @@
+<div class="group text-danger">
+  <div class="thing">
+    <div class="progress col-xs-8">
+      <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
+    </div>
+    <div class="timing col-xs-4">
+      {{timing.events.navigationStart.time}}ms
+      navigationStart
+    </div>
+  </div>
+  <div class="thing">
+    <div class="timing">
+      {{timing.events.redirectStart.time}}-
+      {{timing.events.redirectEnd.time}}ms
+    </div>
+  </div>
+  <div class="thing">
+    <div class="bar"></div>
+    <div class="timing">
+      {{timing.events.fetchStart.time}}ms
+    </div>
+  </div>
+
+
+{{timing.events.domainLookupStart.time}}-
+{{timing.events.domainLookupEnd.time}}ms
+
+{{timing.events.connectStart.time}}-
+{{timing.events.secureConnectionStart.time}}-
+{{timing.events.connectEnd.time}}ms
+</div>
+
+<div class="group text-warning">
+{{timing.events.requestStart.time}}-
+{{timing.events.responseStart.time}}-
+{{timing.events.responseEnd.time}}-
+</div>
+
+<div class="group text-success">
+{{timing.events.unloadEventStart.time}}-
+{{timing.events.unloadEventEnd.time}}-
+
+{{timing.events.domLoading.time}}-
+{{timing.events.domInteractive.time}}-
+{{timing.events.msFirstPaint.time}}-
+{{timing.events.domContentLoadedEventStart.time}}-
+{{timing.events.domContentLoadedEventEnd.time}}-
+{{timing.events.domContentLoaded.time}}-
+{{timing.events.domComplete.time}}-
+{{timing.events.loadEventStart.time}}-
+{{timing.events.loadEventEnd.time}}-
+</div>
+
+<strong>{{timing.totalTime}}</strong>

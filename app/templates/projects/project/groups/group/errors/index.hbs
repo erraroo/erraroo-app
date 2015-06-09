@@ -1,0 +1,22 @@
+<!-- projects.project.groups.group.errors.index -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <td>Message</td>
+      <td>When</td>
+   </tr>
+ </thead>
+ <tbody>
+  {{#each model as |error|}}
+    <tr>
+      <td class="nowrap max-width-300">
+        {{#link-to "projects.project.groups.group.errors.error" error.id}}
+          {{error.json.trace.message}}
+        {{/link-to}}
+      </td>
+      <td>{{error.createdAt}}</td>
+    </tr>
+  {{/each}}
+</tbody>
+</table>

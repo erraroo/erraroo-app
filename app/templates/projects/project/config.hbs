@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Token</h4>
+      <code>{{model.token}}</code>
+      <p>This is your project's api access token thingy.  You'll need it when you configure the installation.</p>
+
+      <hr>
+
+      <form {{action "save" on="submit"}}>
+        <div class="form-group">
+          <label for="project-name" class="control-tabel">Project Name</label>
+          {{input value=model.name class="form-control" elementId="project-name"}}
+        </div>
+
+        <button type="submit" class="btn btn-primary" disabled={{if model.isDirty '' 'disabled'}}>Save</button>
+      </form>
+    </div>
+  </div>
+</div>

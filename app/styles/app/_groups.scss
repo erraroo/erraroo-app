@@ -1,0 +1,48 @@
+.groups {
+  position: fixed;
+  left: 0px;
+  top: 92px;
+  bottom: 0px;
+  overflow: scroll;
+  width: 300px;
+  background: white;
+  border-right: 4px solid #efefef;
+  font-size: 13px;
+
+  .group {
+    border-bottom: 2px solid #efefef;
+
+    a {
+      text-decoration: none !important;
+      padding: 20px 10px;
+      display: block;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    .group-header {
+      margin-bottom: 5px;
+      color: $text-muted;
+    }
+
+    .group-body {
+
+    }
+
+    &.just-updated {
+      font-weight: bold;
+    }
+
+    border-right: 4px solid transparent;
+    &.is-current {
+      border-right: 4px solid $brand-blue;
+    }
+  }
+}
+
+.groups-outlet {
+  margin-left: 300px;
+}
+

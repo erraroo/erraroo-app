@@ -1,0 +1,31 @@
+@import "app/variables";
+@import "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "app/avatar";
+@import "app/body";
+@import "app/bootstrap-ext";
+@import "app/box";
+@import "app/projects";
+@import "app/groups";
+@import "app/stack-trace";
+@import "app/simple-nav";
+@import "app/components/stack-trace-frame";
+@import "app/components/status-button";
+
+#erraroo-debug-helper {
+  position: fixed;
+  bottom: 0px;
+}
+
+.project-body {
+  padding-top: 43px;
+}
+
+td.nowrap {
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+td.max-width-300 {
+  max-width: 300px;
+}

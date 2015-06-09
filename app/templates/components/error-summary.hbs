@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-8">
+    <h4>Message</h4>
+    <div class="message">
+      {{error.json.trace.message}}
+    </div>
+
+    <h4>URL</h4>
+    <div class="useragent">
+      <a href="{{error.json.url}}">{{error.json.url}}</a>
+    </div>
+
+    <h4>Useragent</h4>
+    <div class="useragent">
+      {{error.json.userAgent}}
+    </div>
+
+    <h4>Plugins</h4>
+    <div class="plugins">
+      {{#each error.json.plugins as |plugin|}}
+        <div class="plugin">
+          <strong>{{plugin.name}}</strong>
+          <p>{{plugin.description}}</p>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h4>Meta</h4>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>When:</td>
+          <td>{{error.createdAt}}<br><small>{{time-ago error.createdAt}}</small></td>
+        </tr>
+        <tr>
+          <td>First Seen</td>
+          <td>{{group.createdAt}}<br><small>{{time-ago group.createdAt}}</small></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Libaries</h4>
+    <table class="table">
+      <tbody>
+      {{#each error.json.libaries as |lib|}}
+        <tr>
+          <td>{{lib.name}}</td>
+          <td>{{lib.version}}</td>
+        </tr>
+      {{else}}
+        <tr>
+          <td class="text-muted text-center">No libaries reported</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

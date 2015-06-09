@@ -1,0 +1,63 @@
+.status {
+  cursor: pointer;
+  display: inline-block;
+  opacity: 0.25;
+}
+
+.status.resolved {
+  color: green;
+  opacity: 1;
+}
+
+.status-button {
+  outline: none;
+
+  .glyphicon-ok {
+    display: inline-block;
+  }
+
+  .glyphicon-refresh {
+    display: none;
+  }
+}
+
+.btn.status-button.is-saving {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+
+  .glyphicon-ok {
+    display: none;
+  }
+
+  .glyphicon-refresh {
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 800ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 1000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 1000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    display: inline-block;
+  }
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+

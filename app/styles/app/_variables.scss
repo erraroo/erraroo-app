@@ -1,0 +1,26 @@
+
+$icon-font-path: '/assets/boostrap/';
+
+$navbar-default-color:  #797979;
+$navbar-default-bg:     #ffffff;
+$navbar-default-border: darken($navbar-default-bg, 6.5%) !default;
+@import "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
+$btn-default-border:    $gray-lighter;
+
+$brand-blue: #2C82C9;
+$brand-green: #2CC990;
+$brand-yellow: #EEE657;
+$brand-orange: #FCB941;
+$brand-red: #FC6042;
+$brand-primary: $brand-blue;
+
+$btn-danger-bg: $brand-red;
+/*$btn-danger-border: darken($btn-danger-bg, 1%);*/
+$btn-danger-border: $btn-danger-bg;
+
+$btn-success-bg: $brand-green;
+/*$btn-success-border: darken($btn-success-bg, 1%);*/
+$btn-success-border: $btn-success-bg;
+
+$link-color: $brand-primary;
+

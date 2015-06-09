@@ -1,0 +1,18 @@
+<!-- projects.project.groups.group -->
+<div class="nav simple-nav">
+  {{#if currentError.model}}
+    {{#link-to "projects.project.groups.group.errors.error.index" currentError.model}}
+      Overview
+    {{/link-to}}
+    {{#link-to "projects.project.groups.group.errors.error.stack" currentError.model}}
+      Stack
+    {{/link-to}}
+  {{/if}}
+  {{#link-to "projects.project.groups.group.errors.index"}}
+    All Errors ({{currentErrors.model.meta.pagination.total}})
+  {{/link-to}}
+</div>
+
+<div class="container-fluid">
+  {{outlet}}
+</div>
