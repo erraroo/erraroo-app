@@ -26,7 +26,7 @@ module.exports = function(environment) {
       authorizer: 'authorizer:application',
       crossOriginWhitelist: [
         'http://localhost:3000',
-        'http://api.erraroo.com',
+        'https://api.erraroo.com',
       ]
     },
 
@@ -71,10 +71,10 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.erraroo = {
       token: 'VDJAKW5GlRPFeaKsg5MavQ',
-      endpoint: 'http://api.erraroo.com',
+      endpoint: 'https://api.erraroo.com',
     };
 
-    ENV.apiHost = 'http://api.erraroo.com';
+    ENV.apiHost = 'https://api.erraroo.com';
   }
 
   return ENV;
