@@ -6,7 +6,8 @@ var mergeTrees = require('broccoli-merge-trees');
 
 var app = new EmberApp({
   fingerprint: {
-    prepend: 'https://d16vxe267myqks.cloudfront.net/'
+    //prepend: 'https://d16vxe267myqks.cloudfront.net/'
+    prepend: 'https://s3.amazonaws.com/assets.erraroo.com/'
   },
 
   sourcemaps: {
