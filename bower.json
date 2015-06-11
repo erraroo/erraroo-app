@@ -17,7 +17,8 @@
     "moment": "~2.10.2",
     "c3": "~0.4.10",
     "reconnectingWebsocket": "~1.0.0",
-    "ember-simple-auth": "0.7.3"
+    "ember-simple-auth": "0.7.3",
+    "bootstrap-sass": "~3.3.4"
   },
   "resolutions": {
     "ember": "canary",
