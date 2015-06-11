@@ -75,6 +75,7 @@ module.exports = function(environment) {
     };
 
     ENV.apiHost = 'https://api.erraroo.com';
+    ENV.favicon = 'https://d16vxe267myqks.cloudfront.net/favicon.ico';
   }
 
   return ENV;

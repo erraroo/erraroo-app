@@ -5,6 +5,10 @@ var pick = require('broccoli-static-compiler');
 var mergeTrees = require('broccoli-merge-trees');
 
 var app = new EmberApp({
+  fingerprint: {
+    prepend: 'https://d16vxe267myqks.cloudfront.net/'
+  },
+
   sourcemaps: {
     enabled: true,
   },
@@ -16,7 +20,6 @@ app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstra
 app.import('bower_components/d3/d3.js');
 app.import('bower_components/c3/c3.js');
 app.import('bower_components/c3/c3.css');
-app.import('bower_components/reconnectingWebsocket/reconnecting-websocket.js');
 
 var bootstrapFonts = pick('bower_components/bootstrap-sass-official/assets/fonts/bootstrap', {
   srcDir: '/',
