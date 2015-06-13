@@ -1,5 +1,5 @@
 <div class="groups">
-  {{#each arrangedContent as |group|}}
+  {{#each arrangedContent key="id" as |group|}}
     {{group-summary group=group currentGroup=currentGroup}}
   {{/each}}
 </div>

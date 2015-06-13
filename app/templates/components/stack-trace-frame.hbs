@@ -1,10 +1,10 @@
 <code class="block">{{frame.origFile}}</code>
 <ol start="{{start-line frame}}" class="context">
-  {{~#each frame.preContext as |line|~}}
+  {{~#each frame.preContext key='@index' as |line|~}}
     <li>{{line}}</li>
   {{~/each~}}
   <li class="highlight">{{frame.contextLine}}</li>
-  {{~#each frame.postContext as |line|~}}
+  {{~#each frame.postContext key='@index' as |line|~}}
     <li>{{line}}</li>
   {{~/each~}}
 </ol>

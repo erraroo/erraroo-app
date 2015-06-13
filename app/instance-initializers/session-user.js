@@ -3,10 +3,10 @@
 export function initialize(application) {
   const container = application.container;
   const session = container.lookup('simple-auth-session:main');
-  const store = container.lookup('store:application');
 
   session.reopen({
     user: function() {
+      const store = container.lookup('store:main');
       return store.find('user', 'me');
     }.property('content'),
   });

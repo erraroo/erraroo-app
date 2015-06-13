@@ -17,7 +17,7 @@
 
     <h4>Plugins</h4>
     <div class="plugins">
-      {{#each error.json.plugins as |plugin|}}
+      {{#each error.json.plugins key='@guid' as |plugin|}}
         <div class="plugin">
           <strong>{{plugin.name}}</strong>
           <p>{{plugin.description}}</p>
@@ -43,7 +43,7 @@
     <h4>Libaries</h4>
     <table class="table">
       <tbody>
-      {{#each error.json.libaries as |lib|}}
+      {{#each error.json.libaries key='@guid' as |lib|}}
         <tr>
           <td>{{lib.name}}</td>
           <td>{{lib.version}}</td>

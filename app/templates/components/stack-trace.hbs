@@ -1,3 +1,3 @@
-{{#each trace.stack as |frame|}}
+{{#each trace.stack key='@index' as |frame|}}
   {{stack-trace-frame frame=frame isExpanded=isExpanded}}
 {{/each}}

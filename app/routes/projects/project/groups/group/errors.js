@@ -7,10 +7,10 @@ export default Authenticated.extend({
 
   model: function(params) {
     const errorsQuery = params;
-    errorsQuery.group_id = this.mf('group').get('id');
     errorsQuery.page = params.page;
     errorsQuery.project_id = this.mf('project').get('id');
-    return this.store.findQuery('error', errorsQuery);
+    errorsQuery.checksum = this.mf('group').get('checksum');
+    return this.store.query('error', errorsQuery);
   },
 
   mf: function(path) {

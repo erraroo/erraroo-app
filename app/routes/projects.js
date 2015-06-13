@@ -3,7 +3,7 @@ import Poller from 'erraroo/mixins/poller';
 
 export default Authenticated.extend(Poller, {
   model: function() {
-    return this.store.find('project');
+    return this.store.findAll('project');
   },
 
   activate: function() {
@@ -15,6 +15,6 @@ export default Authenticated.extend(Poller, {
   },
 
   poll: function() {
-    return this.store.findQuery('project', {});
+    return this.store.query('project', {});
   },
 });

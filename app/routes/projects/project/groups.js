@@ -3,7 +3,7 @@ import Poller from 'erraroo/mixins/poller';
 
 export default Authenticated.extend(Poller, {
   model: function(/*params*/) {
-    return this.store.findQuery('group', {
+    return this.store.query('group', {
       project_id: this.modelFor('projects.project').get('id'),
     });
   },
