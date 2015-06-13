@@ -31,7 +31,7 @@
     "ember-cli-content-security-policy": "0.4.0",
     "ember-cli-dependency-checker": "^1.0.0",
     "ember-cli-deploy": "^0.4.1",
-    "ember-cli-erraroo": "git+https://github.com/erraroo/ember-cli-erraroo.git#c29f59fa56e7a7a804a9020b8380cf1e065330aa",
+    "ember-cli-erraroo": "git+https://github.com/erraroo/ember-cli-erraroo.git",
     "ember-cli-htmlbars": "0.7.6",
     "ember-cli-ic-ajax": "0.1.1",
     "ember-cli-inject-live-reload": "^1.3.0",
