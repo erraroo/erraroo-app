@@ -17,7 +17,7 @@ module.exports = function(environment) {
     defaultPollIntervalSeconds: 30,
 
     contentSecurityPolicy: {
-      'connect-src': "'self' http://localhost:3000",
+      'connect-src': "'self' http://localhost:3000 https://api.erraroo.com",
       'img-src': "'self' www.gravatar.com",
       'style-src': "'self' 'unsafe-inline'",
     },
@@ -33,6 +33,10 @@ module.exports = function(environment) {
     APP: {
 
     },
+
+    ErrarooENV: {
+      environment: environment,
+    }
   };
 
   if (environment === 'development') {
@@ -43,12 +47,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.erraroo = {
-      debug: true,
-      token: 'Wo4IPFcR508_aTwcz0Hd0w',
-      endpoint: 'http://localhost:3000',
-    };
 
+    ENV.ErrarooENV.debug = true;
+    ENV.ErrarooENV.token = 'Wo4IPFcR508_aTwcz0Hd0w';
+    ENV.ErrarooENV.endpoint = 'http://localhost:3000/api/v1/events';
   }
 
   if (environment === 'test') {
