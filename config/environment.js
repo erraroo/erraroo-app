@@ -63,11 +63,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-
-    ENV.erraroo = {
-      token: 'Wo4IPFcR508_aTwcz0Hd0w',
-      endpoint: 'http://localhost:3000',
-    };
   }
 
   if (environment === 'production') {
@@ -78,6 +73,9 @@ module.exports = function(environment) {
 
     ENV.apiHost = 'https://api.erraroo.com';
     ENV.favicon = 'https://d16vxe267myqks.cloudfront.net/favicon.ico';
+
+    ENV.ErrarooENV.token = 'VDJAKW5GlRPFeaKsg5MavQ';
+    ENV.ErrarooENV.endpoint = 'https://api.erraroo.com/api/v1/events';
   }
 
   return ENV;
