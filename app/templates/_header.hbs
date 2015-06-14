@@ -23,17 +23,18 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            {{#each projects key='id' as |project|}}
+            {{#each projects as |project|}}
               <li>
                 {{#link-to 'projects.project.groups' project}}
                   {{#if project.unresolvedCount}}
                     <span class="label label-danger pull-right">{{project.unresolvedCount}}</span>
                   {{/if}}
-
                   {{project.name}}
                 {{/link-to}}
               </li>
             {{/each}}
+            <li class="divider"></li>
+            <li>{{#link-to 'projects.new'}}New Project{{/link-to}}</li>
           </ul>
         </li>
       </ul>

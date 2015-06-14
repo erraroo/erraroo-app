@@ -6,8 +6,7 @@ export default Ember.Controller.extend(ApplicationRouteMixin, {
     'projects',
     'projects/project',
   ],
-
-  project: Ember.computed.oneWay('controllers.projects/project.model'),
   projects: Ember.computed.oneWay('controllers.projects.model'),
+  project:  Ember.computed.oneWay('controllers.projects/project.model'),
 });
 

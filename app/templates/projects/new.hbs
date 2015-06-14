@@ -3,7 +3,7 @@
   <div class="form-group {{if model.errors.name 'has-error'}}">
     <label for="name" class="control-label">Name</label>
     {{input elementId="name" value=model.name class="form-control"}}
-    {{#each model.errors.name as |e|}}<span class="help-block">{{e.message}}</span>{{/each}}
+    {{#each model.errors.name key='@guid' as |e|}}<span class="help-block">{{e.message}}</span>{{/each}}
   </div>
 
   <div class="form-group">
