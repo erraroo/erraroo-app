@@ -8,9 +8,17 @@
       <hr>
 
       <form {{action "save" on="submit"}}>
-        <div class="form-group">
+        <div class="form-group {{if model.errors.name 'has-error'}}">
           <label for="project-name" class="control-tabel">Project Name</label>
           {{input value=model.name class="form-control" elementId="project-name"}}
+
+          {{#each model.errors.name key='@guid' as |e|}}
+            <span class="help-block">{{e.message}}</span>
+          {{/each}}
+
+          {{#unless model.errors.name}}
+            <p class="help-block">The name of the project</p>
+          {{/unless}}
         </div>
 
         <button type="submit" class="btn btn-primary" disabled={{if model.isDirty '' 'disabled'}}>Save</button>
