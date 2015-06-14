@@ -6,7 +6,7 @@ export function initialize(application) {
 
   session.reopen({
     user: function() {
-      const store = container.lookup('store:main');
+      const store = container.lookup('service:store');
       return store.find('user', 'me');
     }.property('content'),
   });
