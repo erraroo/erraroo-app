@@ -18,6 +18,10 @@
       display: block;
     }
 
+    a.mute {
+      padding: 2px;
+    }
+
     a:hover {
       text-decoration: none;
     }
@@ -38,6 +42,7 @@
     border-right: 4px solid transparent;
     &.is-current {
       border-right: 4px solid $brand-blue;
+      background: $brand-faint-highlight;
     }
   }
 }

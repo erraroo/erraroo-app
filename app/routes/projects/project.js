@@ -2,7 +2,7 @@ import Authenticated from '../authenticated';
 
 export default Authenticated.extend({
   actions: {
-    save: function() {
+    save() {
       const that = this;
 
       function success(model) {
@@ -14,6 +14,11 @@ export default Authenticated.extend({
       }
 
       this.currentModel.save().then(success, error);
+    },
+
+    muteGroup(group) {
+      group.toggleProperty('muted');
+      group.save();
     }
   }
 });

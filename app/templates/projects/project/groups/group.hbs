@@ -11,6 +11,10 @@
   {{#link-to "projects.project.groups.group.errors.index"}}
     All Errors ({{currentErrors.model.meta.pagination.total}})
   {{/link-to}}
+
+  <a href="#" {{action "muteGroup" model}} class="{{if model.muted 'text-danger'}}">
+    {{#if model.muted}}Unmute{{else}}Mute{{/if}}
+  </a>
 </div>
 
 <div class="container-fluid">

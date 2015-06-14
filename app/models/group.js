@@ -9,6 +9,7 @@ export default DS.Model.extend({
   lastSeenAt: DS.attr('date'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
+  muted: DS.attr('boolean'),
 
   isJustUpdated: false,
 
