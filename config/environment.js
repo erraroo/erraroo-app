@@ -33,10 +33,6 @@ module.exports = function(environment) {
     APP: {
 
     },
-
-    ErrarooENV: {
-      environment: environment,
-    }
   };
 
   if (environment === 'development') {
@@ -48,9 +44,11 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.ErrarooENV.debug = true;
-    ENV.ErrarooENV.token = 'Wo4IPFcR508_aTwcz0Hd0w';
-    ENV.ErrarooENV.endpoint = 'http://localhost:3000/api/v1/events';
+    ENV.ErrarooENV = {
+      debug: true,
+      token: 'Wo4IPFcR508_aTwcz0Hd0w',
+      endpoint: 'https://localhost:3000/api/v1/events',
+    };
   }
 
   if (environment === 'test') {
@@ -66,16 +64,12 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.erraroo = {
-      token: 'VDJAKW5GlRPFeaKsg5MavQ',
-      endpoint: 'https://api.erraroo.com',
-    };
-
     ENV.apiHost = 'https://api.erraroo.com';
     ENV.favicon = 'https://d16vxe267myqks.cloudfront.net/favicon.ico';
-
-    ENV.ErrarooENV.token = 'VDJAKW5GlRPFeaKsg5MavQ';
-    ENV.ErrarooENV.endpoint = 'https://api.erraroo.com/api/v1/events';
+    ENV.ErrarooENV = {
+      token: 'TDyMQo0yvN3wVoH2EZybJg',
+      endpoint: 'https://api.erraroo.com/api/v1/events',
+    };
   }
 
   return ENV;
