@@ -6,12 +6,12 @@ export default Ember.Component.extend({
 
   didInsertElement:function() {
     const events = [
-     'appcacheTime',
+     'unloadEventTime',
      'redirectTime',
+     'appcacheTime',
      'lookupDomainTime',
      'connectTime',
      'requestTime',
-     'unloadEventTime',
      'firstPaintTime',
      'initDomTreeTime',
      'domReadyTime',
