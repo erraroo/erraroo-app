@@ -9,9 +9,9 @@
       {{input type="checkbox" checked=session.user.pref.emailOnError elementId="email-on-error"}}
       Email notifcations when an error occurs?
     </label>
+
     {{#if session.user.pref.isSaving}}
-      saving...
+      {{spinkit-spinner class="saving"}}
     {{/if}}
-    {{loading-bars}}
   </div>
 </div>

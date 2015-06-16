@@ -29,3 +29,18 @@ td.nowrap {
 td.max-width-300 {
   max-width: 300px;
 }
+
+.saving {
+  display: inline-block;
+
+  .spinner {
+    margin: 0;
+    width: auto;
+
+    > div {
+      height: 10px;
+      width: 10px;
+    }
+  }
+}
+
