@@ -11,7 +11,7 @@
             <label for="name" class="control-label">Name</label>
             {{input elementId="name" value=model.name class="form-control"}}
 
-            {{#each model.errors.name key='@guid' as |e|}}
+            {{#each model.errors.name as |e|}}
               <span class="help-block">{{e.message}}</span>
             {{/each}}
 

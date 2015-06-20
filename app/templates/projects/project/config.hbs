@@ -12,7 +12,7 @@
           <label for="project-name" class="control-tabel">Project Name</label>
           {{input value=model.name class="form-control" elementId="project-name"}}
 
-          {{#each model.errors.name key='@guid' as |e|}}
+          {{#each model.errors.name as |e|}}
             <span class="help-block">{{e.message}}</span>
           {{/each}}
 
