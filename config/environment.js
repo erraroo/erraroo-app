@@ -46,7 +46,7 @@ module.exports = function(environment) {
 
     ENV.ErrarooENV = {
       debug: true,
-      token: 'zhO9W4xnK4jFkISH8SHepg',
+      token: 'VU369SNC0SqknngA0tVJtg',
       endpoint: 'http://localhost:3000/api/v1/events',
     };
   }
