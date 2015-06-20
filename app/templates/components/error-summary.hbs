@@ -12,18 +12,11 @@
 
     <h4>Useragent</h4>
     <div class="useragent">
-      {{error.json.userAgent}}
+      {{error.json.useragent}}
     </div>
 
-    <h4>Plugins</h4>
-    <div class="plugins">
-      {{#each error.json.plugins as |plugin|}}
-        <div class="plugin">
-          <strong>{{plugin.name}}</strong>
-          <p>{{plugin.description}}</p>
-        </div>
-      {{/each}}
-    </div>
+    <h4>Stack</h4>
+    {{stack-trace trace=error.json.trace isExpanded=true}}
   </div>
   <div class="col-md-4">
     <h4>Meta</h4>

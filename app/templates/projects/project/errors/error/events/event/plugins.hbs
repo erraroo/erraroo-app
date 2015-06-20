@@ -1,0 +1,9 @@
+<h4>Plugins</h4>
+<div class="plugins">
+  {{#each model.json.plugins as |plugin|}}
+    <div class="plugin">
+      <strong>{{plugin.name}}</strong>
+      <p>{{plugin.description}}</p>
+    </div>
+  {{/each}}
+</div>

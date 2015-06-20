@@ -20,8 +20,7 @@ export default Router.map(function() {
             this.route('latest');
             this.route('event', { path: '/:event_id' }, function() {
               this.route('stack');
-              this.route('state');
-              this.route('ember');
+              this.route('plugins');
             });
           });
         });
