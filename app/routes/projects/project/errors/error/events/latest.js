@@ -2,7 +2,7 @@ import Authenticated from 'erraroo/routes/authenticated';
 
 export default Authenticated.extend({
   model: function() {
-    return this.modelFor('projects.project.groups.group.errors');
+    return this.modelFor('projects.project.errors.error.events');
   },
 
   afterModel: function(models /*, transition*/) {
@@ -13,13 +13,13 @@ export default Authenticated.extend({
   transitionPath: function() {
     let path = this.controllerFor('application').get('currentPath');
     if (!this.isStickyPath(path)) {
-      path = 'projects.project.groups.group.errors.error';
+      path = 'projects.project.errors.error.events.event';
     }
 
     return path;
   },
 
   isStickyPath: function(path) {
-    return path === 'projects.project.groups.group.errors.error.stack';
+    return path === 'projects.project.errors.error.events.event.stack';
   }
 });

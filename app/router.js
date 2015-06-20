@@ -14,11 +14,11 @@ export default Router.map(function() {
 
       });
 
-      this.route('groups', { path: '/groups'}, function() {
-        this.route('group', { path: '/:group_id'}, function() {
-          this.route('errors', { path: '/errors' }, function() {
+      this.route('errors', { path: '/errors'}, function() {
+        this.route('error', { path: '/:error_id'}, function() {
+          this.route('events', { path: '/events' }, function() {
             this.route('latest');
-            this.route('error', { path: '/:error_id' }, function() {
+            this.route('event', { path: '/:event_id' }, function() {
               this.route('stack');
               this.route('state');
               this.route('ember');

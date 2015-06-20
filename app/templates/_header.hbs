@@ -25,7 +25,7 @@
           <ul class="dropdown-menu" role="menu">
             {{#each projects as |project|}}
               <li>
-                {{#link-to 'projects.project.groups' project}}
+                {{#link-to 'projects.project.errors' project}}
                   {{#if project.unresolvedCount}}
                     <span class="label label-danger pull-right">{{project.unresolvedCount}}</span>
                   {{/if}}

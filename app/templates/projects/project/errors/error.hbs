@@ -1,15 +1,15 @@
 <!-- projects.project.groups.group -->
 <div class="nav simple-nav">
-  {{#if currentError.model}}
-    {{#link-to "projects.project.groups.group.errors.error.index" currentError.model}}
+  {{#if currentEvent.model}}
+    {{#link-to "projects.project.errors.error.events.event.index" currentEvent.model}}
       Overview
     {{/link-to}}
-    {{#link-to "projects.project.groups.group.errors.error.stack" currentError.model}}
+    {{#link-to "projects.project.errors.error.events.event.stack" currentEvent.model}}
       Stack
     {{/link-to}}
   {{/if}}
-  {{#link-to "projects.project.groups.group.errors.index"}}
-    All Errors ({{currentErrors.model.meta.pagination.total}})
+  {{#link-to "projects.project.errors.error.events.index"}}
+    All Events ({{currentEvents.model.meta.pagination.total}})
   {{/link-to}}
 
   <a href="#" {{action "muteGroup" model}} class="{{if model.muted 'text-danger'}}">
