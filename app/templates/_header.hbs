@@ -1,71 +1,61 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-
-      {{#link-to "index" class="navbar-brand"}}erraroo{{/link-to}}
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+         {{#if project}}
             {{project.name}}
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            {{#each projects as |project|}}
-              <li>
-                {{#link-to 'projects.project.errors' project}}
-                  {{#if project.unresolvedCount}}
-                    <span class="label label-danger pull-right">{{project.unresolvedCount}}</span>
-                  {{/if}}
-                  {{project.name}}
-                {{/link-to}}
-              </li>
-            {{/each}}
-            <li class="divider"></li>
-            <li>{{#link-to 'projects.new'}}New Project{{/link-to}}</li>
-          </ul>
-        </li>
-      </ul>
-      {{#if project}}
-      <ul class="nav navbar-nav">
-        <li>
-          {{#link-to 'projects.project.errors' project}}
-            {{#if project.unresolvedCount}}
-              <span class="label label-danger">{{project.unresolvedCount}}</span>
-            {{/if}}
-            Errors
-          {{/link-to}}
-        </li>
-        <li>{{#link-to "projects.project.performance"}}Perfomance{{/link-to}}</li>
-        <li>
-          {{#link-to "projects.project.config" class="pull-right"}}
-            <span class="glyphicon glyphicon-cog"></span>
-          {{/link-to}}
-        </li>
-      </ul>
-      {{/if}}
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-             <img src="{{session.user.avatar}}" class="avatar">
-             {{session.user.email}} <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li>{{#link-to "settings"}}Settings{{/link-to}}</li>
-            <li class="divider"></li>
-            <li><a href="#" {{action "invalidateSession"}}>Sign out</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
+          {{else}}
+            Select a project
+          {{/if}}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          {{#each projects as |project|}}
+            <li>
+              {{#link-to 'projects.project.errors' project}}
+                {{#if project.unresolvedCount}}
+                  <span class="label label-danger pull-right">{{project.unresolvedCount}}</span>
+                {{/if}}
+                {{project.name}}
+              {{/link-to}}
+            </li>
+          {{/each}}
+          <li class="divider"></li>
+          <li>{{#link-to 'projects.new'}}New Project{{/link-to}}</li>
+        </ul>
+      </li>
+    </ul>
+    {{#if project}}
+    <ul class="nav navbar-nav">
+      <li>
+        {{#link-to 'projects.project.errors' project}}
+          {{#if project.unresolvedCount}}
+            <span class="label label-danger">{{project.unresolvedCount}}</span>
+          {{/if}}
+          Errors
+        {{/link-to}}
+      </li>
+      <li>{{#link-to "projects.project.performance" project}}Perfomance{{/link-to}}</li>
+      <li>
+        {{#link-to "projects.project.config" project class="pull-right"}}
+          <span class="glyphicon glyphicon-cog"></span>
+        {{/link-to}}
+      </li>
+    </ul>
+    {{/if}}
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+           <img src="{{session.user.avatar}}" class="avatar">
+           {{session.user.email}} <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li>{{#link-to "settings"}}Settings{{/link-to}}</li>
+          <li class="divider"></li>
+          <li><a href="#" {{action "invalidateSession"}}>Sign out</a></li>
+        </ul>
+      </li>
+    </ul>
   </div><!-- /.container-fluid -->
 </nav>

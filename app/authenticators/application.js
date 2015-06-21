@@ -3,6 +3,7 @@ import Base from 'simple-auth/authenticators/base';
 import config from 'erraroo/config/environment';
 
 const endpoint = config.apiHost + '/api/v1/sessions';
+const restoreEndpoint = config.apiHost + '/api/v1/users/me';
 
 export default Base.extend({
   authenticate: function(data) {
@@ -21,17 +22,26 @@ export default Base.extend({
   },
 
   restore: function(data) {
-    console.log('restore', data);
+    const that = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      if (data && !Ember.isEmpty(data.token)) {
-        resolve(data);
-      } else {
+      if (data && Ember.isEmpty(data.token)) {
         reject();
       }
+
+      that.ajax(restoreEndpoint, 'get', null, data.token).then(function(payload) {
+
+        // doesn't seem to prevent the current user lookup...
+        const store = that.container.lookup('service:store');
+        store.pushPayload(payload);
+
+        resolve(data);
+      }, function() {
+        reject();
+      });
     });
   },
 
-  ajax: function(url, method, data) {
+  ajax: function(url, method, data, token) {
     const hash =  {
       crossDomain: true,
       type: method,
@@ -42,6 +52,14 @@ export default Base.extend({
       hash.dataType = 'json';
       hash.data = JSON.stringify(data);
     }
+
+    if (token) {
+      hash.headers = {
+        'Authorization': token,
+      };
+    }
+
+    console.log(hash);
 
     return Ember.$.ajax(hash);
   },
