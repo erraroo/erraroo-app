@@ -59,8 +59,6 @@ export default Base.extend({
       };
     }
 
-    console.log(hash);
-
     return Ember.$.ajax(hash);
   },
 });
