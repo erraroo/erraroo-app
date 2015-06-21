@@ -6,20 +6,20 @@ export default Ember.Component.extend({
   classNameBindings: 'color isSaving'.w(),
 
   color: function() {
-    if (this.get('group.resolved')) {
+    if (this.get('error.resolved')) {
       return 'btn-success';
     } else {
       return 'btn-danger';
     }
-  }.property('group.resolved'),
+  }.property('error.resolved'),
 
   click: function() {
-    const model = this.get('group');
+    const model = this.get('error');
     model.toggleProperty('resolved');
     model.save();
   },
 
   isSaving: function() {
-    return this.get('group.isSaving');
-  }.property('group.isSaving')
+    return this.get('error.isSaving');
+  }.property('error.isSaving')
 });
