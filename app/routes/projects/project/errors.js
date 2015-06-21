@@ -2,9 +2,17 @@ import Authenticated from 'erraroo/routes/authenticated';
 import Poller from 'erraroo/mixins/poller';
 
 export default Authenticated.extend(Poller, {
-  model: function(/*params*/) {
+  queryParams: {
+    status: {
+      refreshModel: true,
+      replace: true,
+    }
+  },
+
+  model: function(params) {
     return this.store.query('error', {
       project_id: this.modelFor('projects.project').get('id'),
+      status: params.status,
     });
   },
 
@@ -22,4 +30,16 @@ export default Authenticated.extend(Poller, {
       controller.setGroups(groups);
     });
   },
+
+  actions: {
+    resolveAllErrors: function() {
+      // TODO - make this an api call
+      this.currentModel.forEach(function(model) {
+        if (!model.get('resolved')) {
+          model.set('resolved', true);
+          model.save();
+        }
+      });
+    },
+  }
 });

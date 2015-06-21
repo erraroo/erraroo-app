@@ -1,4 +1,13 @@
 <div class="errors">
+  <div class="errors-filters">
+    <div class="form-group">
+      <label class="control-label">Error Status:</label>
+      {{view "select" content=statusValues value=status class="form-control"}}
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success btn-xs" {{action "resolveAllErrors"}}>Resolve All</button>
+    </div>
+  </div>
   {{#each arrangedContent as |error|}}
     {{error-summary error=error currentError=currentError}}
   {{else}}

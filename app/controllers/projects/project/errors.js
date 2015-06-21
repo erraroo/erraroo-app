@@ -1,11 +1,21 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+  queryParams: ['status'],
+  status: 'unresolved',
+
+  statusValues: [
+    'all',
+    'resolved',
+    'unresolved',
+    'muted',
+  ],
+
   needs: [
     'projects/project/errors/error'
   ],
 
-  sortProperties: ['createdAt', 'lastSeenAt'],
+  sortProperties: ['lastSeenAt'],
   sortAscending: false,
 
   setErrors: function(groups) {
