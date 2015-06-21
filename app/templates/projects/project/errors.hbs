@@ -1,8 +1,8 @@
-<div class="groups">
-  {{#each arrangedContent key="id" as |group|}}
-    {{group-summary group=group currentGroup=currentError}}
+<div class="errors">
+  {{#each arrangedContent as |error|}}
+    {{error-summary error=error currentError=currentError}}
   {{/each}}
 </div>
-<div class="groups-outlet">
+<div class="errors-outlet">
   {{outlet}}
 </div>

@@ -1,44 +1,24 @@
-<div class="row">
-  <div class="col-md-8">
-    <h4>{{error.json.trace.name}}</h4>
-    <p class="message">{{error.json.trace.message}}</p>
-    <p><a href="{{error.json.url}}">{{error.json.url}}</a></p>
-
-    {{stack-trace trace=error.json.trace}}
+{{#link-to "projects.project.errors.error.events.latest" error.id}}
+  <div class="error-header">
+    {{status-button error=error}}
+    <strong>{{error.name}}</strong>
+    <span class="error-occurrences pull-right">
+      <span class="glyphicon glyphicon-fire"></span>
+      {{error.occurrences}}
+    </span>
   </div>
-  <div class="col-md-4">
-    <h4>Meta</h4>
-    <table class="table table-condensed">
-      <tbody>
-        <tr>
-          <td>When:</td>
-          <td>{{error.createdAt}}<br><small>{{time-ago error.createdAt}}</small></td>
-        </tr>
-        <tr>
-          <td>First Seen</td>
-          <td>{{error.createdAt}}<br><small>{{time-ago group.createdAt}}</small></td>
-        </tr>
-        <tr>
-          <td>User Agent</td>
-          <td>{{error.json.userAgent}}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h4>Libaries</h4>
-    <table class="table table-condensed">
-      <tbody>
-      {{#each error.json.libaries as |lib|}}
-        <tr>
-          <td>{{lib.name}}</td>
-          <td>{{lib.version}}</td>
-        </tr>
+  <div class="error-body">
+    <span class="error-message">
+      {{#if error.message}}
+        {{error.message}}
       {{else}}
-        <tr>
-          <td class="text-muted text-center">No libaries reported</td>
-        </tr>
-      {{/each}}
-      </tbody>
-    </table>
+        (no message)
+      {{/if}}
+    </span>
   </div>
-</div>
+  <div class="error-footer">
+    <span class="error-last-seen-at text-muted text-sm">
+      Last seen {{time-ago error.lastSeenAt}}.
+    </span>
+  </div>
+{{/link-to}}

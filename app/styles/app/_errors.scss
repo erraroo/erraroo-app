@@ -1,4 +1,4 @@
-.groups {
+.errors {
   position: fixed;
   left: 0px;
   top: 92px;
@@ -9,13 +9,14 @@
   border-right: 4px solid #efefef;
   font-size: 13px;
 
-  .group {
+  .error {
     border-bottom: 2px solid #efefef;
 
     a {
       text-decoration: none !important;
-      padding: 20px 10px;
+      padding: 10px 5px;
       display: block;
+      color: $text-color;
     }
 
     a.mute {
@@ -26,13 +27,13 @@
       text-decoration: none;
     }
 
-    .group-header {
+    .error-header {
       margin-bottom: 5px;
       color: $text-muted;
     }
 
-    .group-body {
-
+    .error-body {
+      margin-bottom: 5px;
     }
 
     &.just-updated {
@@ -47,7 +48,7 @@
   }
 }
 
-.groups-outlet {
+.errors-outlet {
   margin-left: 300px;
 }
 
