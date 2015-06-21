@@ -67,3 +67,19 @@
 .nav.nav-tabs {
   margin-bottom: 20px;
 }
+
+.navbar .dropdown {
+  -webkit-transition: all 250ms ease-in;
+  -moz-transition: all 250ms ease-in;
+  -o-transition: all 250ms ease-in;
+  -ms-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+}
+
+.navbar .dropdown.open {
+  background: #efefef;
+}
+
+.navbar .dropdown.open .dropdown-menu {
+  border-top: none;
+}
