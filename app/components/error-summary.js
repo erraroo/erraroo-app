@@ -7,11 +7,6 @@ export default Ember.Component.extend({
     'isCurrent',
   ],
 
-  click: function() {
-    this.set('error.isJustUpdated', false);
-    return true;
-  },
-
   isCurrent: Ember.computed('currentError.id', 'error.id', function() {
     return this.get('currentError.id') === this.get('error.id');
   }),
