@@ -4,7 +4,9 @@
     <p class="message">{{error.json.trace.message}}</p>
     <p><a href="{{error.json.url}}">{{error.json.url}}</a></p>
 
-    {{stack-trace trace=error.json.trace}}
+    {{#if error.json.processed}}
+      {{stack-trace trace=error.json.trace}}
+    {{/if}}
   </div>
   <div class="col-md-4">
     <h4>Meta</h4>
