@@ -1,9 +1,16 @@
 {{#link-to "projects.project.errors.error.events.latest" error.id}}
   <div class="error-header">
     {{status-button error=error}}
+
     <strong>{{error.name}}</strong>
+
     <span class="error-occurrences pull-right">
-      <span class="glyphicon glyphicon-fire"></span>
+      {{#if error.muted}}
+        <span class="glyphicon glyphicon-volume-off"></span>
+      {{else}}
+        <span class="glyphicon glyphicon-fire"></span>
+      {{/if}}
+
       {{error.occurrences}}
     </span>
   </div>
