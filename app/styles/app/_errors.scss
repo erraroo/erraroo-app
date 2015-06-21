@@ -17,6 +17,18 @@
   .error {
     border-bottom: 2px solid #efefef;
 
+    -webkit-transition: background-color 250ms ease-in;
+    -moz-transition: background-color 250ms ease-in;
+    -o-transition: background-color 250ms ease-in;
+    -ms-transition: background-color 250ms ease-in;
+    transition: background-color 250ms ease-in;
+
+    -webkit-transition: border-color 250ms ease-in;
+    -moz-transition: border-color 250ms ease-in;
+    -o-transition: border-color 250ms ease-in;
+    -ms-transition: border-color 250ms ease-in;
+    transition: border-color 250ms ease-in;
+
     a {
       text-decoration: none !important;
       padding: 10px;
