@@ -24,6 +24,6 @@ export default Ember.Mixin.create({
   },
 
   startPoll: function() {
-    //this.set('timer', this.schedule(this.get('poll')));
+    this.set('timer', this.schedule(this.get('poll')));
   },
 });

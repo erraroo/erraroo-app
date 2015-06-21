@@ -25,9 +25,10 @@ export default Authenticated.extend(Poller, {
   },
 
   poll: function() {
-    const controller = this.controllerFor('projects/project/groups');
-    return this.model().then(function(groups) {
-      controller.setGroups(groups);
+    const params = this.paramsFor('projects.project.errors');
+    const controller = this.controllerFor('projects/project/errors');
+    return this.model(params).then(function(errors) {
+      controller.setErrors(errors);
     });
   },
 
