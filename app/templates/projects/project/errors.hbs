@@ -1,6 +1,8 @@
 <div class="errors">
   {{#each arrangedContent as |error|}}
     {{error-summary error=error currentError=currentError}}
+  {{else}}
+    <h4 class="text-muted text-center">YAY no errors :)</h4>
   {{/each}}
 </div>
 <div class="errors-outlet">

@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="#">erraroo</a>
+      {{#link-to "index" class="navbar-brand"}}erraroo{{/link-to}}
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,9 +17,6 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             {{project.name}}
-            {{#if project.unresolvedCount}}
-              <span class="label label-danger">{{project.unresolvedCount}}</span>
-            {{/if}}
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
@@ -38,6 +35,24 @@
           </ul>
         </li>
       </ul>
+      {{#if project}}
+      <ul class="nav navbar-nav">
+        <li>
+          {{#link-to 'projects.project.errors' project}}
+            {{#if project.unresolvedCount}}
+              <span class="label label-danger">{{project.unresolvedCount}}</span>
+            {{/if}}
+            Errors
+          {{/link-to}}
+        </li>
+        <li>{{#link-to "projects.project.performance"}}Perfomance{{/link-to}}</li>
+        <li>
+          {{#link-to "projects.project.config" class="pull-right"}}
+            <span class="glyphicon glyphicon-cog"></span>
+          {{/link-to}}
+        </li>
+      </ul>
+      {{/if}}
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
