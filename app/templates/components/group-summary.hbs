@@ -1,12 +1,10 @@
 {{#link-to "projects.project.errors.error.events.latest" group.id}}
   <div class="group-header">
     {{status-button group=group}}
-    <span class="group-occurrences">
+    <strong>{{group.name}}</strong>
+    <span class="group-occurrences pull-right">
       <span class="glyphicon glyphicon-fire"></span>
       {{group.occurrences}}
-    </span>
-    <span class="group-last-seen-at text-muted text-sm pull-right">
-      Last seen {{time-ago group.lastSeenAt}}.
     </span>
   </div>
   <div class="group-body">
@@ -16,6 +14,11 @@
       {{else}}
         (no message)
       {{/if}}
+    </span>
+  </div>
+  <div class="group-footer">
+    <span class="group-last-seen-at text-muted text-sm">
+      Last seen {{time-ago group.lastSeenAt}}.
     </span>
   </div>
 {{/link-to}}

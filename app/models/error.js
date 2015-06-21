@@ -2,6 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   checksum: DS.attr('string'),
+  name: DS.attr('string'),
   message: DS.attr('string'),
   project: DS.belongsTo('project'),
   resolved: DS.attr('boolean'),

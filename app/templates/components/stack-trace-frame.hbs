@@ -1,10 +1,9 @@
-<code class="block">{{frame.origFile}} {{log frame}}</code>
-<ol start="{{start-line frame}}" class="context">
-  {{~#each frame.preContext key='@index' as |line|~}}
-    <li>{{line}}</li>
-  {{~/each~}}
-  <li class="highlight">{{frame.contextLine}}</li>
-  {{~#each frame.postContext key='@index' as |line|~}}
-    <li>{{line}}</li>
+<code class="block">
+  <span class="file">{{file}}</span>
+  <a class="pull-right" {{action "toggleExpanded"}} href="#toggle">show source</a>
+</code>
+<ol start="{{start-line frame}}" class="lines">
+  {{~#each lines as |line| ~}}
+    <li class="{{line.css}} line">{{line.line}}</li>
   {{~/each~}}
 </ol>

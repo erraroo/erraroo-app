@@ -12,7 +12,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       this.transitionTo('login');
     },
 
-    handled: function() {
+    triggerNewError: function() {
       throw new Error('i threw an error' + Math.random());
     },
   },

@@ -1,25 +1,28 @@
 .stack-trace {
   overflow: hidden;
+  font-size: 13px;
 }
 
 .stack-trace .frame {
   margin-bottom: 1em;
 
-  .context {
+  code {
+    border-radius: 0px;
+  }
+
+  .lines {
     font-family: Consolas, "Liberation Mono", Courier, monospace;
     padding: 0px 10px;
     white-space: pre;
 
-    /*cursor: pointer;*/
-
     margin: 0;
     padding: 0;
     list-style-position: inside;
+    clear:both;
 
     li {
       margin: 0px;
       padding: 0 5px;
-      height: 0;
       overflow: hidden;
       color: #999;
       background: #fafafa;
@@ -34,10 +37,3 @@
     }
   }
 }
-
-.stack-trace .frame.is-expanded {
-  .context li {
-    height: auto;
-  }
-}
-
