@@ -53,6 +53,7 @@ export default Base.extend({
       hash.data = JSON.stringify(data);
     }
 
+
     if (token) {
       hash.headers = {
         'Authorization': token,
