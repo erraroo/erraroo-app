@@ -13,7 +13,7 @@ export default Ember.Mixin.create({
     const that = this;
     return Ember.run.later(function() {
       const promise = f.apply(that);
-      promise.then(function() {
+      promise.always(function() {
         that.set('timer', that.schedule(f));
       });
     }, this.get('interval'));

@@ -16,8 +16,12 @@ export default Authenticated.extend(Poller, {
     });
   },
 
+  setupController: function(controller, model) {
+    controller.setErrors(model);
+  },
+
   activate: function() {
-    this.startPoll();
+    //this.startPoll();
   },
 
   deactivate: function() {

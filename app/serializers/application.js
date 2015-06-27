@@ -67,7 +67,7 @@ export default DS.RESTSerializer.extend({
         };
       }
 
-      store.setMetadataFor(type, meta);
+      store.setMetadataFor(type.modelName, meta);
       delete payload.Meta;
     }
   },

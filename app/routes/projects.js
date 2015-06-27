@@ -7,11 +7,11 @@ export default Authenticated.extend(Poller, {
   },
 
   activate: function() {
-    this.startPoll();
+    //this.startPoll();
   },
 
   deactivate: function() {
-    this.stopPoll();
+    //this.stopPoll();
   },
 
   poll: function() {

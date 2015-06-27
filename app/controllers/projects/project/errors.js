@@ -18,9 +18,20 @@ export default Ember.ArrayController.extend({
   sortProperties: ['lastSeenAt'],
   sortAscending: false,
 
+  errorsUpdate: function(error) {
+    this.flagNewError(error);
+    if (this.indexOf(error) === -1) {
+      this.pushObject(error);
+    }
+  },
+
   setErrors: function(groups) {
-    this.flagNewErrors(groups);
-    this.set('model', groups);
+    const errors = Ember.A();
+    groups.forEach(function(g) {
+      errors.pushObject(g);
+    });
+
+    this.set('model', errors);
   },
 
   flagNewErrors: function(groups) {
