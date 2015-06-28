@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 import Poller from 'erraroo/mixins/poller';
+import config from 'erraroo/config/environment';
 
 export default Ember.Route.extend(ApplicationRouteMixin, Poller, {
   actions: {
@@ -29,7 +30,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, Poller, {
 
   poll: function() {
     const that = this;
-    return Ember.$.post('http://localhost:3000/api/v1/backlog', that.channels).then(function(backlog) {
+    return Ember.$.post(config.apiHost + '/api/v1/backlog', that.channels).then(function(backlog) {
       if (Ember.isNone(backlog)) {
         return;
       }
