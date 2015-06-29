@@ -38,14 +38,8 @@ export default Authenticated.extend(Poller, {
 
   actions: {
     resolveAllErrors: function() {
-      // TODO - make this an api call
       const controller = this.controllerFor('projects/project/errors');
-      controller.get('model').forEach(function(model) {
-        if (!model.get('resolved')) {
-          model.set('resolved', true);
-          model.save();
-        }
-      });
+      controller.get('model').invoke('resolve');
     },
   }
 });

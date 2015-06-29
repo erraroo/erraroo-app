@@ -19,4 +19,15 @@ export default DS.Model.extend({
       this.set('isJustUpdated', true);
     }
   },
+
+  resolve: function() {
+    if (!this.get('resolved')) {
+      this.setProperties({
+        resolved: true,
+        isJustUpdated: false,
+      });
+
+      this.save();
+    }
+  }
 });
