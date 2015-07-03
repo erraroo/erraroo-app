@@ -5,6 +5,9 @@ import config from '../../config/environment';
 import '../helpers/controller';
 import '../helpers/signin';
 
+import initializeTestHelpers from 'simple-auth-testing/test-helpers';
+initializeTestHelpers();
+
 export default function startApp(attrs) {
   var application;
 

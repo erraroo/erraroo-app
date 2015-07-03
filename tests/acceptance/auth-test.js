@@ -23,6 +23,8 @@ module('Acceptance: Auth', {
 });
 
 test('visiting / should redirect to login page', function(assert) {
+  invalidateSession();
+
   visit('/');
   andThen(function() {
     assert.equal(currentURL(), '/login');

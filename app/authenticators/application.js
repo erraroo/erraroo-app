@@ -32,7 +32,7 @@ export default Base.extend({
 
         // doesn't seem to prevent the current user lookup...
         const store = that.container.lookup('service:store');
-        store.pushPayload(payload);
+        Ember.run(store, 'pushPayload', payload);
 
         resolve(data);
       }, function() {

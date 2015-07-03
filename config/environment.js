@@ -52,6 +52,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
+    ENV.apiHost = '';
+
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
@@ -61,6 +63,11 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['simple-auth'] = {
+      store: 'simple-auth-session-store:ephemeral',
+      authorizer: 'authorizer:application',
+    };
   }
 
   if (environment === 'production') {

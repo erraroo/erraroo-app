@@ -32,7 +32,9 @@ export default Ember.Controller.extend({
   },
 
   failure: function(errors) {
-    this.set('message', errors.Errors.Signin);
+    if (!Ember.isNone(errors)) {
+      this.set('message', errors.Errors.Signin);
+    }
   },
 
   reset: function() {

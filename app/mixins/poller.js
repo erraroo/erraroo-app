@@ -6,7 +6,6 @@ export default Ember.Mixin.create({
 
   schedule: function(f) {
     if (config.environment === 'test') {
-      console.log('not polling');
       return;
     }
 
