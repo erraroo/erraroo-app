@@ -6,8 +6,10 @@ export default Base.extend({
     hash = hash || {};
     hash.crossDomain = true;
     hash.xhrFields = { withCredentials: false };
-    if (this.get('session.isAuthenticated') && !Ember.isEmpty(this.get('session.token'))) {
-      jqXHR.setRequestHeader('Authorization', this.get('session.token'));
+
+    const token = this.get('session.secure.token');
+    if (this.get('session.isAuthenticated') && !Ember.isEmpty(token)) {
+      jqXHR.setRequestHeader('Authorization', token);
     }
   }
 });

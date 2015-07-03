@@ -3,6 +3,8 @@ import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 import Poller from 'erraroo/mixins/poller';
 import config from 'erraroo/config/environment';
 
+let errorCount = 0;
+
 export default Ember.Route.extend(ApplicationRouteMixin, Poller, {
   actions: {
     triggerNewError: function() {
@@ -12,7 +14,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, Poller, {
 
   activate: function() {
     this.startPoll();
-    window.x = this;
   },
 
   deactivate: function() {
@@ -42,6 +43,14 @@ export default Ember.Route.extend(ApplicationRouteMixin, Poller, {
       Ember.A(backlog.Messages).forEach(function(message) {
         that.handleEvent(message.Payload);
       });
+
+      errorCount = 0;
+      that.interval = 1000;
+    }, function() {
+      errorCount += 1;
+      if (errorCount <= 6) {
+        that.interval = that.interval * 2;
+      }
     });
   },
 
