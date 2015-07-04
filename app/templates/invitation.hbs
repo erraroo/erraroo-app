@@ -4,6 +4,12 @@
       <h2 class="text-center">Welcome new friend</h2>
     </div>
 
+    {{#each errors.Base as |message|}}
+      <div class="alert alert-danger text-center">
+        {{message}}
+      </div>
+    {{/each}}
+
     <form class="form-signup">
       <div class="form-group {{if errors.Email 'has-error'}}">
         <label for="email">Email</label>
