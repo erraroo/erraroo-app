@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Invitations</h1>
+  </div>
+
+  <table class="table table-stripped">
+    <thead>
+      <tr>
+        <th>Address</th>
+        <th>Invited By</th>
+        <th>Accepted</th>
+        <th>Created</th>
+        <th>Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model as |i|}}
+      <tr>
+        <td>{{i.address}}</td>
+        <td>{{i.user.email}}</td>
+        <td>{{i.accepted}}</td>
+        <td>{{i.createdAt}}</td>
+        <td>{{i.updatedAt}}</td>
+        <td>{{#link-to "invitation" i.id}}{{i.id}}{{/link-to}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
