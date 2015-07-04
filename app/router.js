@@ -31,4 +31,6 @@ export default Router.map(function() {
   this.route('signup');
   this.route('sandbox');
   this.route('settings');
+  this.route('invitation', { path: '/invitation/:token' });
+  this.route('invite');
 });
