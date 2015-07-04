@@ -14,10 +14,14 @@ export default Ember.Route.extend({
 
   actions: {
     save() {
+      const flash = Ember.get(this, 'flashMessages');
       const that = this;
-      this.currentModel.save().then(function() {
+      this.currentModel.save().then(function(invite) {
         that.refresh();
-        console.log('TODO: flash message');
+
+        const email = invite.get('address');
+        flash.success(`${email} was invited!`);
+        window.x = flash;
       }, function() {
         console.log('failed', arguments);
       });

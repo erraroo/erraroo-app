@@ -1,0 +1,14 @@
+.flash-messages {
+  .alert {
+    position: fixed;
+    width: 300px;
+    margin-left: -150px;
+    left: 50%;
+    z-index: 9999;
+    top: 0px;
+    text-align: center;
+
+    border: none;
+    background: none;
+  }
+}
