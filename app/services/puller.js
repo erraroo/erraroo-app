@@ -17,7 +17,6 @@ const set = Ember.set;
 
 export default Ember.Service.extend(Ember.Evented, {
   on(channel, target, method) {
-    window.x = this;
     if (!this.has(channel)) {
       channels[channel] = 0;
     }
