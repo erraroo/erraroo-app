@@ -1,16 +1,10 @@
-<div class="container">
-  <div class="page-header">
-    <h1>Your Settings</h1>
+<nav class="simple-nav">
+  <div class="container">
+    {{#link-to "settings.index"}}Notifcations{{/link-to}}
+    {{#link-to "settings.password"}}Password{{/link-to}}
   </div>
+</nav>
 
-  <div class="form-group">
-    <label for="email-on-error">
-      {{input type="checkbox" checked=session.user.pref.emailOnError elementId="email-on-error"}}
-      Email notifcations when an error occurs?
-    </label>
-
-    {{#if session.user.pref.isSaving}}
-      {{spinkit-spinner class="saving"}}
-    {{/if}}
-  </div>
+<div class="container settings-body">
+  {{outlet}}
 </div>

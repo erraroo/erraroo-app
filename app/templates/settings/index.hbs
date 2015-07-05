@@ -1,0 +1,10 @@
+<div class="form-group">
+  <label for="email-on-error">
+    {{input type="checkbox" checked=session.user.pref.emailOnError elementId="email-on-error"}}
+    Email notifcations when an error occurs?
+  </label>
+
+  {{#if session.user.pref.isSaving}}
+    {{spinkit-spinner class="saving"}}
+  {{/if}}
+</div>

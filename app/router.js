@@ -30,7 +30,9 @@ export default Router.map(function() {
   this.route('login');
   this.route('signup');
   this.route('sandbox');
-  this.route('settings');
+  this.route('settings', { path: 'settings' }, function() {
+    this.route('password');
+  });
 
   this.route('invitations');
   this.route('invitation', { path: '/invitation/:token' });
