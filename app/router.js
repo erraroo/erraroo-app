@@ -29,6 +29,8 @@ export default Router.map(function() {
   });
   this.route('login');
   this.route('signup');
+  this.route('forgot-password');
+  this.route('recover-password', { path: '/recover-password/:token' });
   this.route('sandbox');
   this.route('settings', { path: 'settings' }, function() {
     this.route('password');
