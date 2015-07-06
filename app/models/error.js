@@ -11,7 +11,7 @@ export default DS.Model.extend({
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   muted: DS.attr('boolean'),
-
+  tags: DS.hasMany('tag', { async: true }),
   isJustUpdated: false,
 
   flagAsNew: function() {
