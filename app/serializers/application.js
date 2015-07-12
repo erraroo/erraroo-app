@@ -31,7 +31,6 @@ export default DS.RESTSerializer.extend({
     }
 
     if (relationship === 'hasMany') {
-      console.log(upperCamelize(key) + this.get('primaryKey') + 's');
       return upperCamelize(key) + this.get('primaryKey') + 's';
     }
 

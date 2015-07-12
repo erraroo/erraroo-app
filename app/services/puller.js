@@ -74,7 +74,6 @@ export default Ember.Service.extend(Ember.Evented, {
   },
 
   poll() {
-    console.log('poll', channels);
     const that = this;
     let aborted = false;
 

@@ -11,7 +11,6 @@ export default Authenticated.extend({
     //errorsQuery.project_id = this.mf('project').get('id');
     //errorsQuery.checksum = this.mf('group').get('checksum');
     //return this.store.query('error', errorsQuery);
-
     return this.modelFor('projects.project.errors.error.events');
   },
 

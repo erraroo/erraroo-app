@@ -5,10 +5,6 @@ export default Ember.ArrayController.extend({
   status: 'unresolved',
   tags: [],
   library: null,
-  asfd: function() {
-    window.x = this;
-
-  }.on('init'),
 
   statusValues: [
     'all',

@@ -21,14 +21,15 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   },
 
   onAccountEvent(event) {
-    switch (event.Name) {
-      case "errors.update":
-        const id = Ember.get(event, 'Payload.Error.ID') + '';
-        this.store.pushPayload(event.Payload);
+    //switch (event.Name) {
+      //case "errors.update":
+        //const id = Ember.get(event, 'Payload.Error.ID') + '';
+        //this.store.push(event.Payload);
 
-        const error = this.store.recordForId('error', id);
-        this.controllerFor('projects.project.errors').errorsUpdate(error);
-    }
+
+        //const error = this.store.recordForId('error', id);
+        //this.controllerFor('projects.project.errors').errorsUpdate(error);
+    //}
   },
 
   onGlobalEvent(e) {
