@@ -1,8 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-  queryParams: ['status'],
+  queryParams: ['status', 'tags', 'library'],
   status: 'unresolved',
+  tags: [],
+  library: null,
+  asfd: function() {
+    window.x = this;
+
+  }.on('init'),
 
   statusValues: [
     'all',
@@ -12,8 +18,11 @@ export default Ember.ArrayController.extend({
   ],
 
   needs: [
-    'projects/project/errors/error'
+    'projects/project/errors/error',
+    'projects/project'
   ],
+
+  project: Ember.computed.oneWay('controllers.projects/project.model'),
 
   sortProperties: ['lastSeenAt'],
   sortAscending: false,

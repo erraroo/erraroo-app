@@ -17,9 +17,11 @@ module.exports = function(environment) {
     defaultPollIntervalSeconds: 30,
 
     contentSecurityPolicy: {
-      'connect-src': "'self' http://localhost:3000 https://api.erraroo.com",
+      'connect-src': "'self' http://localhost:3000 https://api.erraroo.com https://dicom-app.s3.amazonaws.com",
       'img-src': "'self' www.gravatar.com",
-      'style-src': "'self' 'unsafe-inline'",
+      'style-src': "'self' 'unsafe-inline' *",
+      'script-src': "*",
+      'font-src': "*",
     },
 
     'simple-auth': {

@@ -7,6 +7,12 @@
     {{#link-to "projects.project.errors.error.events.event.plugins" currentEvent.model}}
       Plugins
     {{/link-to}}
+    {{#link-to "projects.project.errors.error.events.event.logs" currentEvent.model}}
+      Logs
+    {{/link-to}}
+    {{#link-to "projects.project.errors.error.events.event.userdata" currentEvent.model}}
+      Userdata
+    {{/link-to}}
   {{/if}}
   {{#link-to "projects.project.errors.error.events.index"}}
     All Events ({{currentEvents.model.meta.pagination.total}})

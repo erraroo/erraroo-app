@@ -21,10 +21,14 @@ export default Router.map(function() {
             this.route('event', { path: '/:event_id' }, function() {
               this.route('stack');
               this.route('plugins');
+              this.route('userdata');
+              this.route('logs');
             });
           });
         });
       });
+
+      this.route('libraries');
     });
   });
   this.route('login');

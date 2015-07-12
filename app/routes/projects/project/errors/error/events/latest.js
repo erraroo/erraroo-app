@@ -20,6 +20,8 @@ export default Authenticated.extend({
   },
 
   isStickyPath: function(path) {
-    return path === 'projects.project.errors.error.events.event.stack';
+    return path === 'projects.project.errors.error.events.event.stack' ||
+      path === 'projects.project.errors.error.events.event.logs' ||
+      path === 'projects.project.errors.error.events.event.userdata' ;
   }
 });

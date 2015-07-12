@@ -1,0 +1,5 @@
+{{#each sortedLogs as |log|}}
+  {{log-entry level=log.level timestamp=log.timestamp message=log.message}}
+{{else}}
+  <h1 class="text-center text-muted empty-each">No logs :-(</h1>
+{{/each}}

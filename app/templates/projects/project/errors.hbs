@@ -4,6 +4,12 @@
       <label class="control-label">Error Status:</label>
       {{view "select" content=statusValues value=status class="form-control"}}
     </div>
+
+    {{#if library}}
+      {{#link-to (query-params library=null)}}
+        Clear lib
+      {{/link-to}}
+    {{/if}}
     <div class="form-group">
       <button class="btn btn-success btn-xs" {{action "resolveAllErrors"}}>Resolve All</button>
     </div>

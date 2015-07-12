@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Version</th>
+      <th>Created At</th>
+      <th>Errors</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |l|}}
+      <tr>
+        <td>{{l.name}}</td>
+        <td>{{l.version}}</td>
+        <td>{{l.createdAt}}</td>
+        <td>
+          {{#link-to "projects.project.errors" l.project (query-params library=l.id)}}
+            errors
+          {{/link-to}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
