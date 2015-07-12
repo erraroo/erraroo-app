@@ -1,0 +1,19 @@
+@import '../variables';
+
+.log {
+  &.info {
+    @extend .text-default;
+  }
+
+  &.warning {
+    @extend .text-warning;
+  }
+
+  &.error {
+    @extend .text-danger;
+  }
+
+  &.transition {
+    @extend .text-muted;
+  }
+}

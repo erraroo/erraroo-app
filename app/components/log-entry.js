@@ -8,6 +8,6 @@ export default Ember.Component.extend({
   classNameBindings: ['level'],
 
   formatedTimestamp: computed('timestamp', function() {
-    return moment(this.get('timestamp')).format("MMMM Do YYYY, h:mm:ss a");
+    return moment(this.get('timestamp')).format("YYYY MM hh:mm:ss");
   })
 });
