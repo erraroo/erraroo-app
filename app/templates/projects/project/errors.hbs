@@ -14,7 +14,7 @@
       <button class="btn btn-success btn-xs" {{action "resolveAllErrors"}}>Resolve All</button>
     </div>
   </div>
-  {{#each arrangedContent as |error|}}
+  {{#each sortedErrors as |error|}}
     {{error-summary error=error currentError=currentError}}
   {{else}}
     <h4 class="text-muted text-center">YAY no errors :)</h4>

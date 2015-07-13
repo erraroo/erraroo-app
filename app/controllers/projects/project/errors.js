@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ArrayController.extend({
+export default Ember.Controller.extend({
   queryParams: ['status', 'tags', 'library'],
   status: 'unresolved',
   tags: [],
@@ -23,10 +23,13 @@ export default Ember.ArrayController.extend({
   sortProperties: ['lastSeenAt'],
   sortAscending: false,
 
+  errorsSorting: ['lastSeenAt:desc'],
+  sortedErrors: Ember.computed.sort('model', 'errorsSorting'),
+
   errorsUpdate: function(error) {
     this.flagNewError(error);
-    if (this.indexOf(error) === -1) {
-      this.pushObject(error);
+    if (this.get('model').indexOf(error) === -1) {
+      this.get('model').pushObject(error);
     }
   },
 
@@ -44,7 +47,7 @@ export default Ember.ArrayController.extend({
   },
 
   flagNewError: function(group) {
-    if (this.indexOf(group) === -1) {
+    if (this.get('model').indexOf(group) === -1) {
       group.flagAsNew();
     }
   },

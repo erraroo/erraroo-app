@@ -119,7 +119,7 @@ export default Ember.Service.extend(Ember.Evented, {
   handleBacklog(backlog) {
     const that = this;
 
-    Ember.keys(backlog.Channels).forEach(function(key) {
+    Object.keys(backlog.Channels).forEach(function(key) {
       channels[key] = backlog.Channels[key];
     });
 

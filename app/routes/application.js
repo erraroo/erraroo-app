@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
+import erraroo from 'ember-cli-erraroo/erraroo';
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
   puller: Ember.inject.service('puller'),
@@ -17,19 +18,29 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     sessionRequiresAuthentication() {
       this.get('puller').stop();
       this._super();
+    },
+
+    error(err, transition) {
+      erraroo.reportApplicationRouteError(err, transition);
     }
   },
 
+  sessionUserChanged: Ember.observer('session.user.id', function() {
+    erraroo.userdata = {
+      id: this.get('session.user.id'),
+      email: this.get('session.user.email')
+    };
+  }),
+
   onAccountEvent(event) {
-    //switch (event.Name) {
-      //case "errors.update":
-        //const id = Ember.get(event, 'Payload.Error.ID') + '';
-        //this.store.push(event.Payload);
+    switch (event.Name) {
+      case "errors.update":
+        const id = Ember.get(event, 'Payload.Error.ID') + '';
+        this.store.pushPayload(event.Payload);
 
-
-        //const error = this.store.recordForId('error', id);
-        //this.controllerFor('projects.project.errors').errorsUpdate(error);
-    //}
+        const error = this.store.recordForId('error', id);
+        this.controllerFor('projects.project.errors').errorsUpdate(error);
+    }
   },
 
   onGlobalEvent(e) {

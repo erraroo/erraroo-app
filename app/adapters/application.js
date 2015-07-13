@@ -6,6 +6,16 @@ export default DS.RESTAdapter.extend({
   host: config.apiHost,
   namespace: 'api/v1',
 
+  shouldReloadAll() {
+    //console.log('shouldReloadAll', arguments);
+    return false;
+  },
+
+  shouldBackgroundReloadRecord() {
+    //console.log('shouldBackgroundReloadRecord', arguments);
+    return false;
+  },
+
   ajax: function(url, method, hash) {
     hash = hash || {};
     hash.crossDomain = true;

@@ -8,6 +8,8 @@ function upperCamelize(str) {
 export default DS.RESTSerializer.extend({
   primaryKey: 'ID',
 
+  isNewSerializerAPI: true,
+
   serializeAttribute: function(record, json, key, attribute) {
     if (attribute.options.readOnly) {
       return;
@@ -71,8 +73,8 @@ export default DS.RESTSerializer.extend({
         };
       }
 
-      store.setMetadataFor(type.modelName, meta);
       delete payload.Meta;
+      return meta;
     }
   },
 });
