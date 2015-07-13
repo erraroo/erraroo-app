@@ -38,8 +38,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
         const id = Ember.get(event, 'Payload.Error.ID') + '';
         this.store.pushPayload(event.Payload);
 
-        const error = this.store.recordForId('error', id);
-        this.controllerFor('projects.project.errors').errorsUpdate(error);
+        //const error = this.store.recordForId('error', id);
+        //this.controllerFor('projects.project.errors').errorsUpdate(error);
     }
   },
 

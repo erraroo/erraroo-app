@@ -16,9 +16,9 @@ export default Authenticated.extend({
       this.currentModel.save().then(success, error);
     },
 
-    muteGroup(group) {
-      group.toggleProperty('muted');
-      group.save();
+    mute(error) {
+      error.toggleProperty('muted');
+      error.save();
     }
   }
 });

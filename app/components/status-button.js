@@ -17,6 +17,7 @@ export default Ember.Component.extend({
     const model = this.get('error');
     model.toggleProperty('resolved');
     model.save();
+    return false;
   },
 
   isSaving: function() {

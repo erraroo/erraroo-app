@@ -1,14 +1,6 @@
 $width: 260px;
 
 .errors {
-  position: fixed;
-  left: 0px;
-  top: 51px;
-  bottom: 0px;
-  overflow: scroll;
-  width: $width;
-  background: white;
-  border-right: 4px solid #efefef;
   font-size: 13px;
 
   .errors-filters {

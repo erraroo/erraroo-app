@@ -1,0 +1,40 @@
+<!-- projects/project/error/events/event.hbs -->
+
+<div class="event-header">
+  <div class="btn-group pull-right" style="margin-top: 6px;">
+    {{#link-to currentPath 1 class="btn btn-default btn-sm"}}
+      Newest
+    {{/link-to}}
+    {{#link-to currentPath newerEvent disabled=canNotNewerEvent class="btn btn-default btn-sm"}}
+      <span class="glyphicon glyphicon-menu-left"></span>
+    {{/link-to}}
+    <div class="btn btn-default btn-sm">
+    {{model.meta.pagination.page}}
+    of
+    {{model.meta.pagination.total}}
+    </div>
+    {{#link-to currentPath olderEvent disabled=canNotOlderEvent class="btn btn-default btn-sm"}}
+      <span class="glyphicon glyphicon-menu-right"></span>
+    {{/link-to}}
+    {{#link-to currentPath oldestEvent class="btn btn-default btn-sm"}}
+      Oldest
+    {{/link-to}}
+  </div>
+
+  <div class="nav simple-nav">
+    {{#link-to "projects.project.error.events.event.index"}}
+      Index
+    {{/link-to}}
+
+    {{#link-to "projects.project.error.events.event.logs"}}
+      Logs
+    {{/link-to}}
+
+    <a href="#" {{action "mute" error}} class="{{if error.muted 'text-danger'}}">
+      {{#if error.muted}}Unmute{{else}}Mute{{/if}}
+    </a>
+  </div>
+</div>
+
+
+{{outlet}}
