@@ -1,6 +1,9 @@
 import Authenticated from 'erraroo/routes/authenticated';
 
 export default Authenticated.extend({
+  // pages through the error's events one by one
+  // waits for the payload to load from external
+  // storage and then resolves the model.
   model: function(params) {
     const query = params;
     query.limit = 1;
@@ -12,6 +15,10 @@ export default Authenticated.extend({
       const meta  = results.get('meta');
       event.set('meta', meta);
       return event;
+    }).then(function(event) {
+      return event.get('json').then(function() {
+        return event;
+      });
     });
   },
 
