@@ -21,7 +21,7 @@
           {{/unless}}
         </div>
 
-        <button type="submit" class="btn btn-primary" disabled={{if model.isDirty '' 'disabled'}}>Save</button>
+        <button type="submit" class="btn btn-primary" disabled={{if model.hasDirtyAttributes '' 'disabled'}}>Save</button>
       </form>
     </div>
   </div>

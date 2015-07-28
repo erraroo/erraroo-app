@@ -7,8 +7,9 @@ export function initialize(application) {
   session.reopen({
     user: function() {
       const store = container.lookup('service:store');
-      return store.find('user', 'me');
-    }.property('content'),
+      const userID = this.get('content.secure.userID');
+      return store.find('user', userID || 'me');
+    }.property('content.secure.userID'),
   });
 }
 

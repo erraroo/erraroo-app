@@ -12,12 +12,11 @@ export default Ember.Controller.extend({
     'muted',
   ],
 
-  needs: [
-    'projects/project/errors/error',
-    'projects/project'
-  ],
+  p: Ember.inject.controller('projects/project'),
+  project: Ember.computed.oneWay('p.model'),
 
-  project: Ember.computed.oneWay('controllers.projects/project.model'),
+  e: Ember.inject.controller('projects/project/errors/error'),
+  currentError: Ember.computed.oneWay('e.model'),
 
   sortProperties: ['lastSeenAt'],
   sortAscending: false,
@@ -26,9 +25,14 @@ export default Ember.Controller.extend({
   sortedErrors: Ember.computed.sort('model', 'errorsSorting'),
 
   errorsUpdate: function(error) {
+    const model = this.get('model');
+    if (Ember.isNone(model)) {
+      return;
+    }
+
     this.flagNewError(error);
-    if (this.get('model').indexOf(error) === -1) {
-      this.get('model').pushObject(error);
+    if (model.indexOf(error) === -1) {
+      model.pushObject(error);
     }
   },
 
@@ -51,5 +55,4 @@ export default Ember.Controller.extend({
     }
   },
 
-  currentError: Ember.computed.oneWay('controllers.projects/project/errors/error.model'),
 });

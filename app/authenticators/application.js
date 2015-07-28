@@ -29,11 +29,9 @@ export default Base.extend({
       }
 
       that.ajax(restoreEndpoint, 'get', null, data.token).then(function(payload) {
-
-        // doesn't seem to prevent the current user lookup...
         const store = that.container.lookup('service:store');
         Ember.run(store, 'pushPayload', payload);
-
+        data.userID = payload.User.ID;
         resolve(data);
       }, function() {
         reject();
