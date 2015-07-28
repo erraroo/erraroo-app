@@ -1,5 +1,5 @@
-import DS from 'ember-data';
 import Ember from 'ember';
+import DS from 'ember-data';
 import config from 'erraroo/config/environment';
 
 export default DS.RESTAdapter.extend({
@@ -22,24 +22,37 @@ export default DS.RESTAdapter.extend({
     return this._super(url, method, hash);
   },
 
-  ajaxError: function(jqXHR) {
-    var error = this._super(jqXHR);
+  isInvalid: function(status, headers, payload) {
+    return status === 400 && !Ember.isNone(payload.Errors);
+  },
 
-    if (jqXHR && jqXHR.status === 400) {
-      var response = Ember.$.parseJSON(jqXHR.responseText),
-      errors = {};
+  _normalizeErrors(payload) {
+    const errors = [];
+    const makeError = this._jsonApiError;
+    Object.keys(payload.Errors).forEach(function(key) {
+      payload.Errors[key].forEach(function(detail) {
+        errors.push(makeError(key, detail));
+      });
+    });
 
-      if (response.Errors !== undefined) {
-        var jsonErrors = response.Errors;
+    return errors;
+  },
 
-        Ember.keys(jsonErrors).forEach(function(key) {
-          errors[key.camelize()] = jsonErrors[key];
-        });
-      }
+  _jsonApiError(key, detail) {
+    return {
+      detail: detail,
+      source: {
+        pointer: `data/attributes/${key.camelize()}`,
+      },
+    };
+  },
 
+  handleResponse: function(status, headers, payload) {
+    if (this.isInvalid(status, headers, payload)) {
+      const errors = this._normalizeErrors(payload);
       return new DS.InvalidError(errors);
-    } else {
-      return error;
     }
+
+    return this._super(...arguments);
   },
 });
