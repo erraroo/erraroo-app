@@ -1,6 +1,5 @@
 {{#link-to "projects.project.error.events" error.id}}
   <div class="error-header">
-    {{status-button error=error}}
 
     <strong>{{error.name}}</strong>
 
@@ -15,6 +14,9 @@
     </span>
   </div>
   <div class="error-body">
+    <div class="pull-right">
+      {{status-button error=error}}
+    </div>
     <span class="error-message">
       {{#if error.message}}
         {{error.message}}
@@ -28,4 +30,5 @@
       Last seen {{time-ago error.lastSeenAt}}.
     </span>
   </div>
+
 {{/link-to}}

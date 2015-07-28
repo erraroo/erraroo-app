@@ -1,3 +1,11 @@
-.block {
-  display: block;
+.stack-trace {
+  .frame {
+    .header {
+      color: $text-muted;
+
+      a {
+        color: $text-muted;
+      }
+    }
+  }
 }

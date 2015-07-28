@@ -41,6 +41,8 @@
     <a href="#" {{action "mute" error}} class="{{if error.muted 'text-danger'}}">
       {{#if error.muted}}Unmute{{else}}Mute{{/if}}
     </a>
+
+    {{status-button error=error}}
   </div>
 </div>
 

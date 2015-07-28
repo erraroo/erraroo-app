@@ -1,7 +1,13 @@
-<code class="block">
+<div class="header">
   <span class="file">{{file}}</span>
-  <a class="pull-right" {{action "toggleExpanded"}} href="#toggle">show source</a>
-</code>
+  <a class="pull-right" {{action "toggleExpanded"}} href="#toggle">
+    {{#if isExpanded}}
+      hide source
+    {{else}}
+      show source
+    {{/if}}
+  </a>
+</div>
 <ol start="{{start-line frame}}" class="lines">
   {{~#each lines as |line| ~}}
     <li class="{{line.css}} line">{{line.line}}</li>

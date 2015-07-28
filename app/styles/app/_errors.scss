@@ -28,6 +28,7 @@ $width: 260px;
       padding: 10px;
       display: block;
       color: $text-color;
+      transition: background-color 0.5s ease;
     }
 
     a.mute {
@@ -36,6 +37,7 @@ $width: 260px;
 
     a:hover {
       text-decoration: none;
+      background: $gray-lighter;
     }
 
     .error-header {
@@ -53,7 +55,7 @@ $width: 260px;
 
     border-right: 4px solid transparent;
     &.is-current {
-      border-right: 4px solid $brand-blue;
+      border-right: 4px solid $brand-primary;
       background: $brand-faint-highlight;
     }
   }
