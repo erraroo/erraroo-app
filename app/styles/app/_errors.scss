@@ -41,22 +41,15 @@ $width: 260px;
     }
 
     .error-header {
-      margin-bottom: 5px;
-      color: $text-muted;
+
     }
 
     .error-body {
-      margin-bottom: 5px;
+
     }
 
     &.just-updated {
       font-weight: bold;
-    }
-
-    border-right: 4px solid transparent;
-    &.is-current {
-      border-right: 4px solid $brand-primary;
-      background: $brand-faint-highlight;
     }
   }
 }
