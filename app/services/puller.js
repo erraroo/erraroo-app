@@ -1,5 +1,11 @@
 import Ember from 'ember';
 import config from 'erraroo/config/environment';
+const {
+  isNone,
+  run,
+  set,
+  get
+} = Ember;
 
 const max = 30000;
 const norm = 500;
@@ -10,10 +16,6 @@ let interval = norm;
 let request = null;
 
 const channels = {};
-
-const isNone = Ember.isNone;
-const run = Ember.run;
-const set = Ember.set;
 
 export default Ember.Service.extend(Ember.Evented, {
   on(channel, target, method) {
@@ -62,13 +64,13 @@ export default Ember.Service.extend(Ember.Evented, {
   },
 
   stop() {
-    run.cancel(this.get('timer'));
+    run.cancel(get(this, 'timer'));
     stoped = true;
   },
 
   start() {
     stoped = false;
-    if (!this.get('timer')) {
+    if (!get(this, 'timer')) {
       this.schedule();
     }
   },
