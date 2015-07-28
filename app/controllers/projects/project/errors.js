@@ -1,9 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  queryParams: ['status', 'tags', 'library'],
+  queryParams: ['status', 'library'],
   status: 'unresolved',
-  tags: [],
   library: null,
 
   statusValues: [

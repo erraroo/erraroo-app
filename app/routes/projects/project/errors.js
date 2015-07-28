@@ -11,18 +11,12 @@ export default Authenticated.extend({
       refreshModel: true,
       replace: true,
     },
-
-    tags: {
-      refreshModel: true,
-      replace: true,
-    }
   },
 
   model: function(params) {
     return this.store.query('error', {
       project_id: this.modelFor('projects.project').get('id'),
       status: params.status,
-      tags: params.tags,
       library: params.library,
     });
   },
