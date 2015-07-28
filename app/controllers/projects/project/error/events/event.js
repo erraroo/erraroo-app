@@ -4,9 +4,8 @@ const computed = Ember.computed;
 
 export default Ember.Controller.extend({
   page: computed.oneWay('model.meta.pagination.page'),
-
-  needs: ['application'],
-  currentPath: computed.oneWay('controllers.application.currentPath'),
+  application: Ember.inject.controller(),
+  currentPath: computed.oneWay('application.currentPath'),
 
   newestEvent: computed('page', function() {
     return 1;

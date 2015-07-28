@@ -3,7 +3,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   checksum: DS.attr('string'),
-  project: DS.belongsTo('project'),
+  project: DS.belongsTo('project', { async: false }),
   payload: DS.attr('string'),
   createdAt: DS.attr('date'),
   payloadUrl: DS.attr('string'),

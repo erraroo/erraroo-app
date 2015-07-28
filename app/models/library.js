@@ -5,5 +5,5 @@ export default DS.Model.extend({
   version: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  project: DS.belongsTo('project'),
+  project: DS.belongsTo('project', { async: false }),
 });

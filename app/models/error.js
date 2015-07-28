@@ -4,7 +4,7 @@ export default DS.Model.extend({
   checksum: DS.attr('string'),
   name: DS.attr('string'),
   message: DS.attr('string'),
-  project: DS.belongsTo('project'),
+  project: DS.belongsTo('project', { async: false }),
   resolved: DS.attr('boolean'),
   occurrences: DS.attr('number'),
   lastSeenAt: DS.attr('date'),
