@@ -1,7 +1,8 @@
 import Ember from 'ember';
-//import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 
 export default Ember.Controller.extend({
+  currentUser: Ember.inject.service('current-user'),
+
   project:  Ember.computed.oneWay('p.model'),
   p: Ember.inject.controller('projects/project'),
 

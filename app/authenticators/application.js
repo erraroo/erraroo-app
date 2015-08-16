@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Base from 'simple-auth/authenticators/base';
+import Base from 'ember-simple-auth/authenticators/base';
 import config from 'erraroo/config/environment';
 
 const endpoint = config.apiHost + '/api/v1/sessions';

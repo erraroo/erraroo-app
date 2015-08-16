@@ -2,9 +2,12 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import config from 'erraroo/config/environment';
 
+const { service } = Ember.inject;
+
 export default DS.RESTAdapter.extend({
   host: config.apiHost,
   namespace: 'api/v1',
+  session: service('session'),
 
   shouldReloadAll() {
     //console.log('shouldReloadAll', arguments);
@@ -16,10 +19,25 @@ export default DS.RESTAdapter.extend({
     return false;
   },
 
-  ajax: function(url, method, hash) {
-    hash = hash || {};
+  ajaxOptions() {
+    let hash = this._super(...arguments);
     hash.crossDomain = true;
-    return this._super(url, method, hash);
+
+    let { beforeSend } = hash;
+    hash.beforeSend = (xhr) => {
+      console.log("beforeSend");
+      this.get('session').authorize('authorizer:application', (headerName, headerValue) => {
+        console.log('called...', headerName, headerValue);
+        xhr.setRequestHeader(headerName, headerValue);
+      });
+
+      if (beforeSend) {
+        beforeSend(xhr);
+      }
+    };
+
+    console.log(hash);
+    return hash;
   },
 
   isInvalid: function(status, headers, payload) {
@@ -48,6 +66,11 @@ export default DS.RESTAdapter.extend({
   },
 
   handleResponse: function(status, headers, payload) {
+    if (status === 401) {
+      this.get('session').invalidate();
+      return true;
+    }
+
     if (this.isInvalid(status, headers, payload)) {
       const errors = this._normalizeErrors(payload);
       return new DS.InvalidError(errors);
