@@ -1,8 +1,9 @@
 import Ember from 'ember';
 import config from 'erraroo/config/environment';
-import LoginControllerMixin from 'simple-auth/mixins/login-controller-mixin';
+//import LoginControllerMixin from 'simple-auth/mixins/login-controller-mixin';
 
-export default Ember.Controller.extend(LoginControllerMixin, {
+//export default Ember.Controller.extend(LoginControllerMixin, {
+export default Ember.Controller.extend({
   email: '',
   password: '',
 

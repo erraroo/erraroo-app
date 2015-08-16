@@ -1,8 +1,9 @@
 import Ember from 'ember';
-import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
-import erraroo from 'ember-cli-erraroo/erraroo';
+//import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
+//import erraroo from 'ember-cli-erraroo/erraroo';
 
-export default Ember.Route.extend(ApplicationRouteMixin, {
+//export default Ember.Route.extend(ApplicationRouteMixin, {
+export default Ember.Route.extend({
   puller: Ember.inject.service('puller'),
 
   activate: function() {
@@ -21,15 +22,15 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     },
 
     error(err, transition) {
-      erraroo.reportApplicationRouteError(err, transition);
+      //erraroo.reportApplicationRouteError(err, transition);
     }
   },
 
   sessionUserChanged: Ember.observer('session.user.id', function() {
-    erraroo.userdata = {
-      id: this.get('session.user.id'),
-      email: this.get('session.user.email')
-    };
+    //erraroo.userdata = {
+      //id: this.get('session.user.id'),
+      //email: this.get('session.user.email')
+    //};
   }),
 
   onAccountEvent(event) {
