@@ -26,9 +26,14 @@ export default Authenticated.extend({
   },
 
   actions: {
-    resolveAllErrors: function() {
+    resolveAllErrors() {
       const controller = this.controllerFor('projects/project/errors');
       controller.get('model').invoke('resolve');
     },
+
+    changeStatus(status) {
+      console.log("changeStatus", status, 'things');
+      this.transitionTo({queryParams: { status: status} });
+    }
   }
 });

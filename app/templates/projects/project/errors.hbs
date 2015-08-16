@@ -2,7 +2,7 @@
   <div class="errors-filters">
     <div class="form-group">
       <label class="control-label">Error Status:</label>
-      {{view "select" content=statusValues value=status class="form-control"}}
+      {{x-select content=statusValues selectedValue=status action=(action (mut status))}}
     </div>
 
     {{#if library}}
