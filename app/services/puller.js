@@ -4,7 +4,8 @@ const {
   isNone,
   run,
   set,
-  get
+  get,
+  inject,
 } = Ember;
 
 const max = 30000;
@@ -18,6 +19,8 @@ let request = null;
 const channels = {};
 
 export default Ember.Service.extend(Ember.Evented, {
+  session: inject.service('session'),
+
   on(channel, target, method) {
     if (!this.has(channel)) {
       channels[channel] = 0;
@@ -85,6 +88,11 @@ export default Ember.Service.extend(Ember.Evented, {
       url: config.apiHost + '/api/v1/backlog',
       type: 'POST',
       data: channels,
+      contentType: 'application/json',
+      headers: {
+        'Authorization': this.get('session.session.secure.token'),
+        'X-No-Loggy': true,
+      },
 
       success: function(backlog) {
         if (isNone(backlog)) {
