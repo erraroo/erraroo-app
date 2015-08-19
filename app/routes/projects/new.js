@@ -7,7 +7,7 @@ export default Authenticated.extend({
 
   deactivate: function() {
     if (this.currentModel.get('isNew')) {
-      this.currentModel.rollback();
+      this.currentModel.deleteRecord();
     }
   },
 

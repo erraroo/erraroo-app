@@ -30,12 +30,12 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     }
   },
 
-  //sessionUserChanged: Ember.observer('session.user.id', function() {
-    //erraroo.userdata = {
-      //id: this.get('session.user.id'),
-      //email: this.get('session.user.email')
-    //};
-  //}),
+  sessionUserChanged: Ember.observer('session.user.id', function() {
+    erraroo.userdata = {
+      id: this.get('session.user.id'),
+      email: this.get('session.user.email')
+    };
+  }),
 
   onAccountEvent(event) {
     switch (event.Name) {
