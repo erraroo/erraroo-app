@@ -25,9 +25,7 @@ export default DS.RESTAdapter.extend({
 
     let { beforeSend } = hash;
     hash.beforeSend = (xhr) => {
-      console.log("beforeSend");
       this.get('session').authorize('authorizer:application', (headerName, headerValue) => {
-        console.log('called...', headerName, headerValue);
         xhr.setRequestHeader(headerName, headerValue);
       });
 
@@ -36,7 +34,6 @@ export default DS.RESTAdapter.extend({
       }
     };
 
-    console.log(hash);
     return hash;
   },
 

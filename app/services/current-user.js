@@ -8,13 +8,14 @@ export default Ember.Service.extend({
   session: service('session'),
   store: service(),
 
-  user: computed('session.data.secure.userID', function() {
-    const userID = this.get('session.data.secure.userID');
-    console.log("user", userID);
+  user: computed('session.session.secure.userID', function() {
+    const userID = this.get('session.session.secure.userID');
     if (!isEmpty(userID)) {
       return DS.PromiseObject.create({
         promise: this.get('store').find('user', `${userID}`)
       });
     }
+
+    return null;
   })
 });
