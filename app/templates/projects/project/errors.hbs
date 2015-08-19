@@ -1,8 +1,14 @@
 <div class="errors">
-  <div class="errors-filters">
-    <div class="form-group">
-      <label class="control-label">Error Status:</label>
-      {{x-select content=statusValues selectedValue=status action=(action (mut status))}}
+  <div class="errors-toolbar">
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Show by status: <strong>{{status}}</strong> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        {{#each statusValues as |status|}}
+          <li><a href="#" {{action "changeStatus" status}}>{{status}}</a></li>
+        {{/each}}
+      </ul>
     </div>
 
     {{#if library}}
@@ -10,13 +16,14 @@
         Clear lib
       {{/link-to}}
     {{/if}}
-    <div class="form-group">
-      <button class="btn btn-success btn-xs" {{action "resolveAllErrors"}}>Resolve All</button>
-    </div>
+
+    <button class="btn btn-success pull-right btn-xs" {{action "resolveAllErrors"}}>Resolve All</button>
   </div>
-  {{#each sortedErrors as |error|}}
-    {{error-summary error=error currentError=currentError}}
-  {{else}}
-    <h4 class="text-muted text-center">YAY no errors :)</h4>
-  {{/each}}
+  <div class="error-summarys">
+    {{#each sortedErrors as |error|}}
+      {{error-summary error=error currentError=currentError}}
+    {{else}}
+      <h4 class="text-muted text-center">YAY no errors :)</h4>
+    {{/each}}
+  </div>
 </div>
