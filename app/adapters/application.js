@@ -11,7 +11,7 @@ export default DS.RESTAdapter.extend({
 
   shouldReloadAll() {
     //console.log('shouldReloadAll', arguments);
-    return false;
+    return true;
   },
 
   shouldBackgroundReloadRecord() {

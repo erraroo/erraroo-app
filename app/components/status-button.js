@@ -9,7 +9,7 @@ export default Ember.Component.extend({
     if (this.get('error.resolved')) {
       return 'btn-success';
     } else {
-      return 'btn-danger';
+      return 'btn-default';
     }
   }.property('error.resolved'),
 

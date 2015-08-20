@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+.navbar-brand {
+  padding: 3px 3px;
+}
+
 .nav li.title {
   color: #999999;
   padding: 10px 0px;
@@ -37,15 +41,11 @@
           transition-duration: 0.5s;
 }
 
-.navbar-default {
-  background: white;
-}
-
 .navbar-default .navbar-nav > li > a.active,
 .navbar-default .navbar-nav > li > a.active:hover,
 .navbar-default .navbar-nav > li > a.active:focus {
-  background: none;
-  color: #333;
+  background: $navbar-default-link-active-bg;
+  color: $navbar-default-link-active-color;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {

@@ -1,14 +1,9 @@
 import Authenticated from '../authenticated';
+import CleanUpModel from 'erraroo/mixins/clean-up-model';
 
-export default Authenticated.extend({
+export default Authenticated.extend(CleanUpModel, {
   model: function() {
     return this.store.createRecord('project');
-  },
-
-  deactivate: function() {
-    if (this.currentModel.get('isNew')) {
-      this.currentModel.deleteRecord();
-    }
   },
 
   actions: {

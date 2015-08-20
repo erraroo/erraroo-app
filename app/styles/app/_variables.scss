@@ -11,8 +11,25 @@ $brand-warning: $brand-orange;
 $brand-danger: $brand-red;
 $brand-faint-highlight: #fffddc;
 
-$navbar-default-color:  #797979;
-$navbar-default-bg:     #ffffff;
-$navbar-default-border: darken($navbar-default-bg, 6.5%) !default;
+$brand-primary: #F23818;
+
+// Basics of a navbar
+$navbar-height:                    36px;
+$navbar-margin-bottom:             0px;
+$navbar-collapse-max-height:       340px;
+
+$navbar-default-color:             $brand-primary;
+$navbar-default-bg:                rgba(255,255,255, 0.9);
+
+// Navbar links
+$navbar-default-link-color:                $brand-primary;
+$navbar-default-link-hover-color:          darken($brand-primary, 6.5%);
+$navbar-default-link-hover-bg:             transparent;
+$navbar-default-link-active-color:         darken($brand-primary, 15%);
+$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%);
+$navbar-default-link-disabled-color:       #ccc;
+$navbar-default-link-disabled-bg:          transparent;
+
+
 @import "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
-$btn-default-border:    $gray-lighter;
+$btn-default-border:$gray-lighter;

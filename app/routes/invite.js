@@ -1,15 +1,10 @@
 import Ember from 'ember';
+import CleanUpModel from 'erraroo/mixins/clean-up-model';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(CleanUpModel, {
   model: function() {
     console.log('model');
     return this.store.createRecord('invitation');
-  },
-
-  deactivate: function() {
-    if (this.currentModel.get('isNew')) {
-      this.currentModel.rollback();
-    }
   },
 
   actions: {
@@ -20,12 +15,10 @@ export default Ember.Route.extend({
         that.refresh();
 
         const email = invite.get('address');
-        flash.success(`${email} was invited!`);
-        window.x = flash;
+        flash.success("" + email + " was invited!");
       }, function() {
-        console.log('failed', arguments);
+        flash.danger("Invite not sent");
       });
     }
   }
-
 });

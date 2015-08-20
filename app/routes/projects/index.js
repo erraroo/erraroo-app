@@ -1,15 +1,18 @@
 import Authenticated from '../authenticated';
 
 export default Authenticated.extend({
+  projectsExcludingNew() {
+    return this.store.peekAll('project').filterBy('isNew', false);
+  },
+
   beforeModel: function() {
-    const router = this;
-    return this.store.findAll('project').then(function(projects) {
-      const project = projects.get('firstObject');
-      if (projects.get('length') === 0) {
-        router.transitionTo('projects.new');
-      } else {
-        router.transitionTo('projects.project.errors', project);
-      }
-    });
+    const projects = this.projectsExcludingNew();
+    const project = projects.get('firstObject');
+
+    if (projects.get('length') === 0) {
+      this.transitionTo('projects.new');
+    } else {
+      this.transitionTo('projects.project.errors', project);
+    }
   },
 });
