@@ -32,6 +32,7 @@ module.exports = function(environment) {
   ENV['simple-auth'] = {
     base: {
       store: 'session-store:application',
+      session: 'session:application',
     },
 
     authorizer: 'authorizer:application',
