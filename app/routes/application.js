@@ -14,9 +14,18 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     this.get('puller').on('accounts.1', this, 'onAccountEvent');
   },
 
+  authenticationSucceeded() {
+
+      console.log('AUTH SECSDFKLJSDLKFLKDSFLSKDJ');
+  },
+
   actions: {
     triggerNewError() {
       throw new Error('i threw an error' + Math.random());
+    },
+
+    authenticationSucceeded() {
+      console.log('sessionAuthenticated');
     },
 
     sessionRequiresAuthentication() {

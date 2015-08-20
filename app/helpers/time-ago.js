@@ -5,4 +5,4 @@ export function timeAgo(params/*, hash*/) {
   return moment(params[0]).fromNow();
 }
 
-export default Ember.HTMLBars.makeBoundHelper(timeAgo);
+export default Ember.Helper.helper(timeAgo);
