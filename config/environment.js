@@ -24,17 +24,21 @@ module.exports = function(environment) {
       'font-src': "*",
     },
 
-    'simple-auth': {
-      authorizer: 'authorizer:application',
-      crossOriginWhitelist: [
-        'http://localhost:3000',
-        'https://api.erraroo.com',
-      ]
-    },
-
     APP: {
 
     },
+  };
+
+  ENV['simple-auth'] = {
+    base: {
+      store: 'session-store:application',
+    },
+
+    authorizer: 'authorizer:application',
+    crossOriginWhitelist: [
+      'http://localhost:3000',
+      'https://api.erraroo.com',
+    ],
   };
 
   if (environment === 'development') {
@@ -66,10 +70,6 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
 
-    ENV['simple-auth'] = {
-      store: 'simple-auth-session-store:ephemeral',
-      authorizer: 'authorizer:application',
-    };
   }
 
   if (environment === 'production') {

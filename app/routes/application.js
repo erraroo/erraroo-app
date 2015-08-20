@@ -15,8 +15,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   },
 
   authenticationSucceeded() {
-
-      console.log('AUTH SECSDFKLJSDLKFLKDSFLSKDJ');
+    console.log('AUTH SECSDFKLJSDLKFLKDSFLSKDJ');
   },
 
   actions: {
