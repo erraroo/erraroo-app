@@ -1,5 +1,14 @@
+$avatar-size: 28px;
+
 .avatar {
   border-radius: 18px;
-  width: 18px;
-  height: 18px;
+  width: $avatar-size;
+  height: $avatar-size;
+  border: 2px solid $brand-primary;
+}
+
+.navbar-user {
+  li a {
+    padding: 4px 10px;
+  }
 }
