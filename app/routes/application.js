@@ -37,6 +37,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     },
 
     error(err, transition) {
+      console.error('TODO: errarro is swallowing this not nicely', err);
       erraroo.reportApplicationRouteError(err, transition);
     }
   },
