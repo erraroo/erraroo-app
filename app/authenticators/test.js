@@ -4,7 +4,7 @@ import config from 'erraroo/config/environment';
 
 export default Base.extend({
   restore: function(data) {
-    return Ember.RSVP.resolve();
+    return Ember.RSVP.reject();
   },
 
   authenticate: function(options) {

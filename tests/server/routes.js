@@ -28,5 +28,13 @@ export function defaultRoutes() {
         ]
       })];
   });
+
+  this.post('/api/v1/sessions', function(request) {
+    return [201, {"Content-Type": "application/json"},
+      JSON.stringify({
+        token: 'xxx',
+        userID: '1',
+      })];
+  });
 }
 

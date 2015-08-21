@@ -4,12 +4,14 @@ import {
   test
 } from 'qunit';
 import startApp from 'erraroo/tests/helpers/start-app';
+import {defaultRoutes} from 'erraroo/tests/server/routes';
 import Pretender from 'pretender';
 
-var application, server;
+let application, server;
 
 module('Acceptance: Auth', {
   beforeEach: function() {
+    server = new Pretender(defaultRoutes);
     application = startApp();
   },
 
@@ -30,17 +32,3 @@ test('visiting / should redirect to login page', function(assert) {
     assert.equal(currentURL(), '/login');
   });
 });
-
-// this behavior used to work in the test suite...
-//test('should login if manifest.user is available', function(assert) {
-  //assert.expect(1);
-
-  //window.manifest = {};
-  //window.manifest.UserID = 1;
-  //window.manifest.Users = [{ID: 1, Email: 'bob@example.com'}];
-
-  //Ember.run(application, 'destroy');
-  //application = startApp();
-  //assert.ok(controllerFor('session').get('isAuthenticated'));
-//});
-

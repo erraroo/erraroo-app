@@ -4,12 +4,14 @@ import {
   test
 } from 'qunit';
 import startApp from 'erraroo/tests/helpers/start-app';
+import {defaultRoutes} from 'erraroo/tests/server/routes';
 import Pretender from 'pretender';
 
 var application, server;
 
 module('Acceptance: Login', {
   beforeEach: function() {
+    server = new Pretender(defaultRoutes);
     application = startApp();
   },
 
@@ -30,81 +32,56 @@ test('visiting /login', function(assert) {
   });
 });
 
-// TODO: figure out how to bypass simple auth and inject this error
-//test('displays a message with a bad login', function(assert) {
-  //server = new Pretender(function() {
-    //this.post('/api/v1/sessions', function() {
-      //console.log('got here....');
+test('displays a message with a bad login', function(assert) {
+  server.post('/api/v1/sessions', function() {
+    const errors = JSON.stringify({
+      Errors: {
+        Signin: ['invalid email or password'],
+      }
+    });
+    return [400, {"Content-Type": "application/json"}, errors];
+  });
 
-      //const errors = JSON.stringify({
-        //Errors: {
-          //Signin: ['invalid email or password'],
-        //}
-      //});
-      //return [400, {"Content-Type": "application/json"}, errors];
-    //});
-  //});
+  visit('/login');
+  click("button:contains('Login')");
+  andThen(function() {
+    assert.equal(currentPath(), 'login');
+    assert.equal(find('.message').text().trim(), 'invalid email or password');
+  });
+});
 
-  //visit('/login');
-  //click("button:contains('Login')");
-  //andThen(function() {
-    //assert.equal(currentPath(), 'login');
-    //assert.equal(find('.message').text().trim(), 'invalid email or password');
-  //});
-//});
+test('signs the user in', function(assert) {
+  assert.expect(3);
 
-//test('signs the user in', function(assert) {
-  //assert.expect(3);
+  server.post('/api/v1/sessions', function(request) {
+    const params = JSON.parse(request.requestBody);
+    assert.equal('bob@example.com', params.Signin.Email);
+    assert.equal('password', params.Signin.Password);
 
-  //server = new Pretender(function() {
-    //this.get('/api/v1/projects', function(request) {
-      //const project = JSON.stringify({Projects: []});
-      //return [200, {"Content-Type": "application/json"}, project];
-    //});
+    return [201, {"Content-Type": "application/json"},
+      JSON.stringify({
+        token: 'xxx',
+        userID: '1',
+      })];
+  });
 
-    //// TODO: figure out how to bypass simple auth and make ajax
-    //this.post('/api/v1/sessions', function(request) {
-      //const params = JSON.parse(request.requestBody);
-      //assert.equal('bob@example.com', params.Signin.Email);
-      //assert.equal('password', params.Signin.Password);
+  visit('/login');
+  fillIn('#email', 'bob@example.com');
+  fillIn('#password', 'password');
+  click("button:contains('Login')");
 
-      //const user = JSON.stringify({
-        //User: {
-          //ID: 1,
-          //Email: 'bob@example.com'
-        //}
-      //});
-      //return [201, {"Content-Type": "application/json"}, user];
-    //});
-  //});
+  andThen(function() {
+    assert.equal(currentURL(), '/projects/1/errors', 'should see their current errors');
+  });
+});
 
-  //visit('/login');
-  //fillIn('#email', 'bob@example.com');
-  //fillIn('#password', 'password');
-  //click("button:contains('Login')");
-  //andThen(function() {
-    //assert.equal(currentPath(), 'projects.new', 'should be shown the create new project page because they have no projects');
-  //});
-//});
+test('redirects to the page we tried to view after we login', function(assert) {
+  visit('/sandbox');
+  fillIn('#email', 'bob@example.com');
+  fillIn('#password', 'password');
+  click('button:contains("Login")');
 
-//test('redirects to the page we tried to view after we login', function(assert) {
-  //server = new Pretender(function() {
-    //this.post('/api/v1/sessions', function(request) {
-      //const user = JSON.stringify({
-        //User: {
-          //ID: 1,
-          //Email: 'bob@example.com'
-        //}
-      //});
-      //return [201, {"Content-Type": "application/json"}, user];
-    //});
-  //});
-
-  //visit('/sandbox');
-  //fillIn('#email', 'bob@example.com');
-  //fillIn('#password', 'password');
-  //click('button:contains("Login")');
-  //andThen(function() {
-    //assert.equal(currentPath(), 'sandbox');
-  //});
-//});
+  andThen(function() {
+    assert.equal(currentPath(), 'sandbox');
+  });
+});
