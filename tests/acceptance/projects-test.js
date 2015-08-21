@@ -4,56 +4,27 @@ import {
   test
 } from 'qunit';
 import startApp from 'erraroo/tests/helpers/start-app';
+import {defaultRoutes}from 'erraroo/tests/server/routes';
 import Pretender from 'pretender';
 
-var application, user = {};
+let application, server = null;
 
 module('Acceptance: Projects', {
   beforeEach: function() {
+    server = new Pretender(defaultRoutes);
     application = startApp();
   },
 
   afterEach: function() {
     Ember.run(application, 'destroy');
+    server.shutdown();
   }
 });
 
 test('visiting /projects', function(assert) {
   assert.expect(4);
 
-  const server = new Pretender(function() {
-    this.get('/api/v1/users/1', function(request) {
-      return [200, {"Content-Type": "application/json"},
-        JSON.stringify({
-          Users: {
-            ID: "1",
-            Email: "bob@example.com"
-          }
-        })];
-    });
-
-    this.get('/api/v1/projects', function(request) {
-      const projects = JSON.stringify({
-        Projects: [
-          {ID: 1, Name: 'project one'},
-          {ID: 2, Name: 'project two'}
-        ]
-      });
-      return [200, {"Content-Type": "application/json"}, projects];
-    });
-
-    this.get('/api/v1/errors', function(request) {
-      const projects = JSON.stringify({
-        Errors: [
-          {ID: 1, Message: 'error one'},
-          {ID: 2, Message: 'error two'}
-        ]
-      });
-      return [200, {"Content-Type": "application/json"}, projects];
-    });
-  });
-
-  authenticateSession({token: '', userID: '1'});
+  authenticateSession({userID: '1'});
   visit('/projects');
 
   andThen(function() {
@@ -67,43 +38,21 @@ test('visiting /projects', function(assert) {
 test('creating a project', function(assert) {
   assert.expect(3);
 
-  const server = new Pretender(function() {
-    this.get('/api/v1/users/1', function(request) {
-      return [200, {"Content-Type": "application/json"},
-        JSON.stringify({
-          Users: {
-            ID: "1",
-            Email: "bob@example.com"
-          }
-        })];
-    });
+   server.post('/api/v1/projects', function(request) {
+    const params = JSON.parse(request.requestBody);
+    assert.equal('test project', params.Project.Name, 'it sends the correct project name');
 
-    this.get('/api/v1/projects', function(request) {
-      const projects = JSON.stringify({
-        Projects: [
-          {ID: 1, Name: 'project one'},
-          {ID: 2, Name: 'project two'}
-        ]
-      });
-      return [200, {"Content-Type": "application/json"}, projects];
-    });
-
-    this.post('/api/v1/projects', function(request) {
-      const params = JSON.parse(request.requestBody);
-      assert.equal('test project', params.Project.Name, 'it sends the correct project name');
-
-      const project = JSON.stringify({
+    return [201, {"Content-Type": "application/json"},
+      JSON.stringify({
         Project: {
           ID: 1,
           Name: params.Project.Name,
           Token: 'PROJECT-TOKEN-1'
         }
-      });
-      return [201, {"Content-Type": "application/json"}, project];
-    });
+      })];
   });
 
-  authenticateSession({token: '', userID: '1'});
+  authenticateSession({userID: '1'});
   visit('/projects/new');
   fillIn('#name', 'test project');
   click("button:contains('Create Project')");
@@ -117,37 +66,16 @@ test('creating a project', function(assert) {
 test('can not create project without a name', function(assert) {
   assert.expect(3);
 
-  const server = new Pretender(function() {
-    this.get('/api/v1/users/1', function(request) {
-      return [200, {"Content-Type": "application/json"},
-        JSON.stringify({
-          Users: {
-            ID: "1",
-            Email: "bob@example.com"
-          }
-        })];
-    });
+  server.post('/api/v1/projects', function(request) {
+    const params = JSON.parse(request.requestBody);
+    assert.equal('test project', params.Project.Name);
 
-    this.get('/api/v1/projects', function(request) {
-      const projects = JSON.stringify({
-        Projects: [
-          {ID: 1, Name: 'project one'},
-          {ID: 2, Name: 'project two'}
-        ]
-      });
-      return [200, {"Content-Type": "application/json"}, projects];
-    });
-
-    this.post('/api/v1/projects', function(request) {
-      const params = JSON.parse(request.requestBody);
-      assert.equal('test project', params.Project.Name);
-
-      const project = JSON.stringify({Errors: {Name: ['name errors']}});
-      return [400, {"Content-Type": "application/json"}, project];
-    });
+    const project = JSON.stringify({Errors: {Name: ['name errors']}});
+    return [400, {"Content-Type": "application/json"}, project];
   });
 
-  authenticateSession({token: '', userID: '1'});
+  authenticateSession({userID: '1'});
+
   visit('/projects/new');
   fillIn('#name', 'test project');
   click("button:contains('Create Project')");
