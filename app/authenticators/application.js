@@ -32,13 +32,15 @@ export default Base.extend({
       }
 
       that.ajax(restoreEndpoint, 'get', null, data.token).then(function(payload) {
+        const userID = `${payload.User.ID}`;
         const store = that.container.lookup('service:store');
         Ember.run(store, 'pushPayload', payload);
 
-        const cu = that.container.lookup('service:current-user');
-        cu.authenticated(`${payload.User.ID}`);
 
-        data.userID = payload.User.ID;
+        const cu = that.container.lookup('service:current-user');
+        cu.authenticated(userID);
+
+        data.userID = userID;
         resolve(data);
       }, function() {
         reject();

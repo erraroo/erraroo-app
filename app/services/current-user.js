@@ -1,21 +1,23 @@
 import Ember from 'ember';
-import DS from 'ember-data';
 
-const { service } = Ember.inject;
-const { computed, isEmpty} = Ember;
+const { isEmpty, inject } = Ember;
 
 export default Ember.Service.extend(Ember.Evented, {
-  store: service(),
+  store: inject.service('store'),
 
   user: null,
 
   authenticated: function(userID) {
-    const that = this;
-    this.get('store').find('user', userID).then(function(u) {
-      that.setProperties({
-        user: u,
-      });
-      that.trigger('authenticated', u);
-    });
+    if (isEmpty(userID)) {
+      return;
+    }
+
+    const store = this.get('store');
+    store.find('user', userID).then((u) => this.setUser(u));
+  },
+
+  setUser(user) {
+    this.set('user', user);
+    this.trigger('authenticated', user);
   }
 });
