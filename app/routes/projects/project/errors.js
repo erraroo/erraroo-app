@@ -11,6 +11,11 @@ export default Authenticated.extend({
       refreshModel: true,
       replace: true,
     },
+
+    page: {
+      refreshModel: true,
+      replace: true,
+    }
   },
 
   model: function(params) {
@@ -18,7 +23,13 @@ export default Authenticated.extend({
       project_id: this.modelFor('projects.project').get('id'),
       status: params.status,
       library: params.library,
+      page: params.page,
     });
+  },
+
+  afterModel(model) {
+
+    window.m = model;
   },
 
   setupController: function(controller, model) {
@@ -34,6 +45,6 @@ export default Authenticated.extend({
     changeStatus(status) {
       console.log("changeStatus", status, 'things');
       this.transitionTo({queryParams: { status: status} });
-    }
+    },
   }
 });

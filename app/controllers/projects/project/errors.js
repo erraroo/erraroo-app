@@ -1,9 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  queryParams: ['status', 'library'],
+  queryParams: ['status', 'library', 'page'],
   status: 'unresolved',
   library: null,
+  page: 1,
 
   statusValues: [
     'all',
@@ -43,6 +44,7 @@ export default Ember.Controller.extend({
     });
 
     this.set('model', errors);
+    this.set('pagination', groups.get('meta.pagination'));
   },
 
   flagNewErrors: function(groups) {
@@ -55,4 +57,13 @@ export default Ember.Controller.extend({
     }
   },
 
+  actions: {
+    nextPage() {
+      this.incrementProperty('page');
+    },
+
+    prevPage() {
+      this.decrementProperty('page');
+    }
+  }
 });

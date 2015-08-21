@@ -19,6 +19,7 @@
 
     <button class="btn btn-success pull-right btn-xs" {{action "resolveAllErrors"}}>Resolve All</button>
   </div>
+
   <div class="error-summarys">
     {{#each sortedErrors as |error|}}
       {{error-summary error=error currentError=currentError}}
@@ -26,4 +27,6 @@
       <h4 class="text-muted text-center">YAY no errors :)</h4>
     {{/each}}
   </div>
+
+  {{prev-next pagination=pagination next=(action "nextPage") prev=(action "prevPage")}}
 </div>
