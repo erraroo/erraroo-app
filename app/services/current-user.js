@@ -13,7 +13,7 @@ export default Ember.Service.extend(Ember.Evented, {
     }
 
     const store = this.get('store');
-    store.find('user', userID).then((u) => this.setUser(u));
+    return store.find('user', userID).then((u) => this.setUser(u));
   },
 
   setUser(user) {
