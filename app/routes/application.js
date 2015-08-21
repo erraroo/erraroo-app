@@ -6,25 +6,15 @@ const { inject } = Ember;
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
   currentUser: inject.service('current-user'),
-  session: inject.service('session'),
   puller: inject.service('puller'),
 
   activate: function() {
     this.get('puller').on('global', this, 'onGlobalEvent');
-    this.get('puller').on('accounts.1', this, 'onAccountEvent');
-  },
-
-  authenticationSucceeded() {
-    console.log('AUTH SECSDFKLJSDLKFLKDSFLSKDJ');
   },
 
   actions: {
     triggerNewError() {
       throw new Error('i threw an error' + Math.random());
-    },
-
-    authenticationSucceeded() {
-      console.log('sessionAuthenticated');
     },
 
     sessionRequiresAuthentication() {
@@ -42,12 +32,21 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     }
   },
 
-  sessionUserChanged: Ember.observer('currentUser.user.id', function() {
+  setupEvents: Ember.on('init', function() {
+    this.get('currentUser').on('authenticated', this, 'authenticated');
+  }),
+
+  authenticated: function(user) {
+    this.get('puller').on(user.get('accountChannel'), this, 'onAccountEvent');
+    this.setupErraroo(user);
+  },
+
+  setupErraroo(user) {
     erraroo.userdata = {
-      id: this.get('currentUser.user.id'),
-      email: this.get('currentUser.user.email')
+      id: user.get('id'),
+      email: user.get('email'),
     };
-  }).on('init'),
+  },
 
   onAccountEvent(event) {
     switch (event.Name) {

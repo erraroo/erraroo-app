@@ -4,20 +4,18 @@ import DS from 'ember-data';
 const { service } = Ember.inject;
 const { computed, isEmpty} = Ember;
 
-export default Ember.Service.extend({
-  userID: null,
-
-  session: service('session'),
+export default Ember.Service.extend(Ember.Evented, {
   store: service(),
 
-  user: computed('userID', function() {
-    const userID = this.get('userID');
-    if (!isEmpty(userID)) {
-      return DS.PromiseObject.create({
-        promise: this.get('store').find('user', `${userID}`)
-      });
-    }
+  user: null,
 
-    return null;
-  }),
+  authenticated: function(userID) {
+    const that = this;
+    this.get('store').find('user', userID).then(function(u) {
+      that.setProperties({
+        user: u,
+      });
+      that.trigger('authenticated', u);
+    });
+  }
 });

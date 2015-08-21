@@ -5,7 +5,7 @@ const {
   run,
   set,
   get,
-  inject,
+  inject
 } = Ember;
 
 const max = 30000;
@@ -90,7 +90,7 @@ export default Ember.Service.extend(Ember.Evented, {
       data: channels,
       contentType: 'application/json',
       headers: {
-        'Authorization': this.get('session.session.secure.token'),
+        'Authorization': this.get('session.data.secure.token'),
         'X-No-Loggy': true,
       },
 
