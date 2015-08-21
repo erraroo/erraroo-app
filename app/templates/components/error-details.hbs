@@ -1,8 +1,12 @@
 <div class="row">
   <div class="col-md-8">
     <h4>{{attrs.event.json.trace.name}}</h4>
-    <p class="message">{{attrs.event.json.trace.message}}</p>
-    <p><a href="{{attr.event.json.url}}">{{attrs.event.json.url}}</a></p>
+    <p class="message">
+      {{attrs.event.json.trace.message}}
+    </p>
+    <p class="url">
+      <a href="{{attr.event.json.url}}">{{attrs.event.json.url}}</a>
+    </p>
 
     {{#if attrs.event.json.processed}}
       {{stack-trace trace=attrs.event.json.trace}}

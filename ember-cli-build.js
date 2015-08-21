@@ -13,7 +13,7 @@ module.exports = function(defaults) {
 
      'ember-cli-bootstrap-sassy': {
        'glyphicons': true,
-       'js': ['dropdown'],
+       'js': ['dropdown', 'collapse'],
      }
   });
 

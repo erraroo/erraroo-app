@@ -1,3 +1,8 @@
 body {
   padding-top: $navbar-height;
 }
+
+.url {
+  overflow: hidden;
+  white-space: nowrap;
+}

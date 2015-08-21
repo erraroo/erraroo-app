@@ -1,67 +1,77 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    {{#link-to "index" class="navbar-brand"}}
-      <img src="/kang.png" height="30" alt="Erraro Kangargoo">
-    {{/link-to}}
-    <ul class="nav navbar-nav">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-         {{#if project}}
-            {{project.name}}
-          {{else}}
-            Select a project
-          {{/if}}
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-          {{#each projects as |project|}}
-            <li>
-              {{#link-to 'projects.project.errors' project}}
-                {{#if project.unresolvedCount}}
-                  <span class="label label-danger pull-right">{{project.unresolvedCount}}</span>
-                {{/if}}
-                {{project.name}}
-              {{/link-to}}
-            </li>
-          {{/each}}
-          <li class="divider"></li>
-          <li>{{#link-to 'projects.new'}}New Project{{/link-to}}</li>
-        </ul>
-      </li>
-    </ul>
-    {{#if project}}
-    <ul class="nav navbar-nav">
-      <li>
-        {{#link-to 'projects.project.errors' project}}
-          {{#if project.unresolvedCount}}
-            <span class="label label-danger">{{project.unresolvedCount}}</span>
-          {{/if}}
-          Errors
-        {{/link-to}}
-      </li>
-      <li>{{#link-to "projects.project.performance" project}}Perfomance{{/link-to}}</li>
-      <li>{{#link-to "projects.project.libraries" project}}Libraries{{/link-to}}</li>
-      <li>
-        {{#link-to "projects.project.config" project class="pull-right"}}
-          <span class="glyphicon glyphicon-cog"></span>
-        {{/link-to}}
-      </li>
-    </ul>
-    {{/if}}
-    <ul class="nav navbar-nav navbar-right navbar-user">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-           <img src="{{currentUser.user.avatar}}" class="avatar">
-           {{curentUser.user.email}} <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-          <li>{{#link-to "settings"}}Settings{{/link-to}}</li>
-          <li>{{#link-to "invite"}}Invite Users{{/link-to}}</li>
-          <li>{{#link-to "invitations"}}Invitations{{/link-to}}</li>
-          <li class="divider"></li>
-          <li><a href="#" {{action "invalidateSession"}}>Sign out</a></li>
-        </ul>
-      </li>
-    </ul>
+    <div class="navbar-header">
+      {{#link-to "index" class="navbar-brand"}}
+        <img src="/kang.png" height="30" alt="Erraro Kangargoo">
+      {{/link-to}}
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+           {{#if project}}
+              {{project.name}}
+            {{else}}
+              Select a project
+            {{/if}}
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            {{#each projects as |project|}}
+              <li>
+                {{#link-to 'projects.project.errors' project}}
+                  {{#if project.unresolvedCount}}
+                    <span class="label label-danger pull-right">{{project.unresolvedCount}}</span>
+                  {{/if}}
+                  {{project.name}}
+                {{/link-to}}
+              </li>
+            {{/each}}
+            <li class="divider"></li>
+            <li>{{#link-to 'projects.new'}}New Project{{/link-to}}</li>
+          </ul>
+        </li>
+      </ul>
+      {{#if project}}
+      <ul class="nav navbar-nav">
+        <li>
+          {{#link-to 'projects.project.errors' project}}
+            {{#if project.unresolvedCount}}
+              <span class="label label-danger">{{project.unresolvedCount}}</span>
+            {{/if}}
+            Errors
+          {{/link-to}}
+        </li>
+        <li>{{#link-to "projects.project.performance" project}}Perfomance{{/link-to}}</li>
+        <li>{{#link-to "projects.project.libraries" project}}Libraries{{/link-to}}</li>
+        <li>
+          {{#link-to "projects.project.config" project class="pull-right"}}
+            <span class="glyphicon glyphicon-cog"></span>
+          {{/link-to}}
+        </li>
+      </ul>
+      {{/if}}
+      <ul class="nav navbar-nav navbar-right navbar-user">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+             <img src="{{currentUser.user.avatar}}" class="avatar">
+             {{curentUser.user.email}} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>{{#link-to "settings"}}Settings{{/link-to}}</li>
+            <li>{{#link-to "invite"}}Invite Users{{/link-to}}</li>
+            <li>{{#link-to "invitations"}}Invitations{{/link-to}}</li>
+            <li class="divider"></li>
+            <li><a href="#" {{action "invalidateSession"}}>Sign out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse collapse -->
   </div><!-- /.container-fluid -->
 </nav>
