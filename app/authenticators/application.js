@@ -10,11 +10,11 @@ export default Base.extend({
     const that = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
       that.ajax(endpoint, 'POST', data).then(function(response) {
+        Ember.run(this, resolve, response);
+
         const userID = `${response.userID}`;
         const cu = that.container.lookup('service:current-user');
         Ember.run(cu, 'authenticated', userID);
-
-        resolve(response);
       }, function(xhr /*, status, error*/) {
         reject(xhr.responseJSON || xhr.responseText);
       });
@@ -37,12 +37,12 @@ export default Base.extend({
         const store = that.container.lookup('service:store');
         Ember.run(store, 'pushPayload', payload);
 
+        data.userID = userID;
+        resolve(data);
+        Ember.run(this, resolve, data);
 
         const cu = that.container.lookup('service:current-user');
         Ember.run(cu, 'authenticated', userID);
-
-        data.userID = userID;
-        resolve(data);
       }, function() {
         reject();
       });
