@@ -6,7 +6,7 @@
     {{flash-message flash=flash messageStyle='bootstrap'}}
   {{/each}}
 </div>
-{{outlet}}
+<div class="application-outlet">{{outlet}}</div>
 
 <div id="erraroo-debug-helper">
   <button {{action "triggerReoccuringError"}}>reocurring</button>
