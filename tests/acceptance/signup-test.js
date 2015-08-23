@@ -4,33 +4,38 @@ import {
   test
 } from 'qunit';
 import startApp from 'erraroo/tests/helpers/start-app';
+import {defaultRoutes} from 'erraroo/tests/server/routes';
 import Pretender from 'pretender';
 
 var application, server;
 
 module('Acceptance: Signup', {
   beforeEach: function() {
+    server = new Pretender(defaultRoutes);
     application = startApp();
   },
 
   afterEach: function() {
     server.shutdown();
     Ember.run(application, 'destroy');
+    if (server) {
+      server.shutdown();
+      server = null;
+    }
   }
 });
 
 test('empty sign up displays errors', function(assert) {
-  server = new Pretender(function() {
-    this.post('/api/v1/signups', function() {
-      const errors = JSON.stringify({
-        'Errors': {
-          'Email': ['error-1', 'error-2'],
-          'Password': ['error-3'],
-        }
-      });
-      return [400, {"Content-Type": "application/json"}, errors];
+  server.post('/api/v1/signups', function() {
+    const errors = JSON.stringify({
+      'Errors': {
+        'Email': ['error-1', 'error-2'],
+        'Password': ['error-3'],
+      }
     });
+    return [400, {"Content-Type": "application/json"}, errors];
   });
+
   visit('/signup');
   click("button:contains('Sign up')");
 
@@ -43,15 +48,14 @@ test('empty sign up displays errors', function(assert) {
 
 test('signs up and logs the new user in', function(assert) {
   assert.expect(3);
-  server = new Pretender(function() {
-    this.post('/api/v1/signups', function(request) {
-      const params = JSON.parse(request.requestBody);
-      assert.equal('bob@example.com', params.Signup.Email);
-      assert.equal('password', params.Signup.Password);
 
-      const user = {User: {ID: '1', Email: 'bob@example.com'}};
-      return [201, {"Content-Type": "application/json"}, JSON.stringify(user)];
-    });
+  server.post('/api/v1/signups', function(request) {
+    const params = JSON.parse(request.requestBody);
+    assert.equal('bob@example.com', params.Signup.Email);
+    assert.equal('password', params.Signup.Password);
+
+    const user = {User: {ID: '1', Email: 'bob@example.com'}};
+    return [201, {"Content-Type": "application/json"}, JSON.stringify(user)];
   });
 
   visit('/signup');
@@ -60,6 +64,6 @@ test('signs up and logs the new user in', function(assert) {
   click("button:contains('Sign up')");
 
   andThen(function() {
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/projects/1/errors', 'redirects to their first project');
   });
 });

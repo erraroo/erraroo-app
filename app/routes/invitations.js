@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import Authenticated from './authenticated';
 
 export default Authenticated.extend({

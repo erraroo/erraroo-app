@@ -5,12 +5,7 @@ export default Authenticated.extend({
   groupPath: 'projects.project.groups.group',
   errorPath: 'projects.project.groups.group.errors.error',
 
-  model: function(params) {
-    //const errorsQuery = params;
-    //errorsQuery.page = params.page;
-    //errorsQuery.project_id = this.mf('project').get('id');
-    //errorsQuery.checksum = this.mf('group').get('checksum');
-    //return this.store.query('error', errorsQuery);
+  model: function() {
     return this.modelFor('projects.project.errors.error.events');
   },
 

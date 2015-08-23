@@ -27,11 +27,6 @@ export default Authenticated.extend({
     });
   },
 
-  afterModel(model) {
-
-    window.m = model;
-  },
-
   setupController: function(controller, model) {
     controller.setErrors(model);
   },
