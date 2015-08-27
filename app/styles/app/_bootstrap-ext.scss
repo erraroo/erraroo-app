@@ -89,3 +89,16 @@
 .navbar .dropdown.open .dropdown-menu {
   border-top: none;
 }
+
+.btn {
+  border-bottom-width: 3px;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.navbar-fixed-top {
+  border-width: 0 0 3px;
+}
+
