@@ -9,6 +9,22 @@ import Pretender from 'pretender';
 
 var application, server;
 
+const page = {
+  url: '/signup',
+  visit() {
+    visit(this.url);
+  },
+
+  fillIn(email='bob@example.com', password='password') {
+    fillIn('#email', email);
+    fillIn('#password', password);
+  },
+
+  submit() {
+   click("button:contains('Create Account')");
+  }
+};
+
 module('Acceptance: Signup', {
   beforeEach: function() {
     server = new Pretender(defaultRoutes);
@@ -36,8 +52,8 @@ test('empty sign up displays errors', function(assert) {
     return [400, {"Content-Type": "application/json"}, errors];
   });
 
-  visit('/signup');
-  click("button:contains('Sign up')");
+  page.visit();
+  page.submit();
 
   andThen(function() {
     assert.equal(currentURL(), '/signup');
@@ -58,10 +74,9 @@ test('signs up and logs the new user in', function(assert) {
     return [201, {"Content-Type": "application/json"}, JSON.stringify(user)];
   });
 
-  visit('/signup');
-  fillIn('#email', 'bob@example.com');
-  fillIn('#password', 'password');
-  click("button:contains('Sign up')");
+  page.visit();
+  page.fillIn();
+  page.submit();
 
   andThen(function() {
     assert.equal(currentURL(), '/projects/1/errors', 'redirects to their first project');
