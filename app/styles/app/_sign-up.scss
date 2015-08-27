@@ -1,0 +1,21 @@
+.header-signup {
+  text-align: center;
+
+  h1 {
+    color:  $brand-primary;
+  }
+
+  p {
+    color: $text-muted;
+  }
+
+  margin-bottom: 40px;
+}
+
+.form-signup {
+  border: 1px solid $gray-lighter;
+  border-bottom: 2px solid $gray-lighter;
+  padding: 20px;
+  margin-bottom: 40px;
+  border-radius: 5px;
+}
