@@ -19,6 +19,16 @@ export default Authenticated.extend({
     mute(error) {
       error.toggleProperty('muted');
       error.save();
+    },
+
+    deleteProject() {
+      if (confirm('Are you sure you want to delete this project?')) {
+        const that = this;
+        this.currentModel.destroyRecord().then(function() {
+          that.transitionTo('index');
+          that.get('flashMessages').success('That terrible project was destroyed!');
+        });
+      }
     }
   }
 });

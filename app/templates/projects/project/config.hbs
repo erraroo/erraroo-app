@@ -23,6 +23,11 @@
 
         <button type="submit" class="btn btn-primary" disabled={{if model.hasDirtyAttributes '' 'disabled'}}>Save</button>
       </form>
+
+      <hr>
+
+      <h4>Delete Project</h4>
+      <button class="btn btn-default" {{action "deleteProject"}}>Delete this project</button>
     </div>
   </div>
 </div>
