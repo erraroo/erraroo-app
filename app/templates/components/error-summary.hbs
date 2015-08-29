@@ -4,6 +4,9 @@
       {{mute-button error=error}}
       {{status-button error=error}}
     </div>
+    {{#unless error.seen}}
+      <span class="glyphicon glyphicon-record text-info"></span>
+    {{/unless}}
     <strong>{{error.name}}</strong>
   </div>
   <div class="error-body">
