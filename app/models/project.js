@@ -16,11 +16,12 @@ export default DS.Model.extend({
     const adapter = store.adapterFor(name);
     const url = adapter.buildURL(name, this.id, this);
     const options = Ember.merge(adapter.ajaxOptions(), {
+      type: 'post',
       url: url + '/regenerate-token'
     });
 
-    return Ember.$.ajax(options).then(function(project) {
-      Ember.run(store, 'pushPayload', project);
+    return Ember.$.ajax(options).then(function(payload) {
+      Ember.run(store, 'pushPayload', payload);
     });
   }
 });

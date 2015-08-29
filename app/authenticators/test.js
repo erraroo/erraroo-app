@@ -3,7 +3,6 @@ import Base from 'ember-simple-auth/authenticators/base';
 
 export default Base.extend({
   restore: function(data) {
-    console.log('restore', data);
     if (data) {
       return Ember.RSVP.resolve(data);
     } else {

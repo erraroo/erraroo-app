@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import Authenticated from '../authenticated';
 
 export default Authenticated.extend({
@@ -33,9 +34,9 @@ export default Authenticated.extend({
 
     regenerateToken() {
       if (confirm('Are you sure you want to regenerate the projects token?  This will stop all incoming data from clients using the existing token!')) {
-        const that = this;
+        const flash = this.get('flashMessages');
         this.currentModel.regenerateToken().then(function() {
-          that.get('flashMessages').success("Your project's token has been regenerated");
+          Ember.run(flash, 'success', "Your project's token has been regenerated");
         }, function() {
           console.error(...arguments);
         });

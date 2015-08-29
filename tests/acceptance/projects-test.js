@@ -85,3 +85,36 @@ test('can not create project without a name', function(assert) {
     assert.equal(find('.help-block').text(), 'name errors');
   });
 });
+
+test('can regenreate a projects token', function(assert) {
+  assert.expect(4);
+
+  const old = window.confirm;
+  window.confirm = function() {
+    assert.ok(true, 'it confirms the action');
+
+    window.confirm = old;
+    return true;
+  };
+
+  server.post('/api/v1/projects/1/regenerate-token', function(request) {
+    assert.ok(true, 'it makes an ajax request to the regenerate end point');
+
+    return [200, {"Content-Type": "application/json"},
+      JSON.stringify({
+        Project: {
+          ID: '1',
+          Token: 'new-token'
+        }
+      })];
+  });
+
+  authenticateSession({userID: '1'});
+
+  visit('/projects/1/config');
+  click("button:contains('Regenerate Token')");
+  andThen(function() {
+    assert.equal(find('#project-token').text(), 'new-token', 'it update the token');
+    assert.equal(find('.flash-messages .alert').length, 1, 'it flashes a message');
+  });
+});
