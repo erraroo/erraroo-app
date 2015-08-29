@@ -29,6 +29,17 @@ export default Authenticated.extend({
           that.get('flashMessages').success('That terrible project was destroyed!');
         });
       }
+    },
+
+    regenerateToken() {
+      if (confirm('Are you sure you want to regenerate the projects token?  This will stop all incoming data from clients using the existing token!')) {
+        const that = this;
+        this.currentModel.regenerateToken().then(function() {
+          that.get('flashMessages').success("Your project's token has been regenerated");
+        }, function() {
+          console.error(...arguments);
+        });
+      }
     }
   }
 });
