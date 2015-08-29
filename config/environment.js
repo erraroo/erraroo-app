@@ -13,6 +13,10 @@ module.exports = function(environment) {
       }
     },
 
+    flashMessageDefaults: {
+      timeout: 1000 * 10,
+    },
+
     apiHost: 'http://localhost:3000',
     defaultPollIntervalSeconds: 30,
 
