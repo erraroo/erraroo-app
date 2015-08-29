@@ -47,13 +47,13 @@ export default Ember.Controller.extend({
     this.set('pagination', groups.get('meta.pagination'));
   },
 
-  flagNewErrors: function(groups) {
-    groups.forEach(this.flagNewError, this);
+  flagNewErrors: function(errors) {
+    errors.forEach(this.flagNewError, this);
   },
 
-  flagNewError: function(group) {
-    if (this.get('model').indexOf(group) === -1) {
-      group.flagAsNew();
+  flagNewError: function(error) {
+    if (this.get('model').indexOf(error) === -1) {
+      error.flag();
     }
   },
 

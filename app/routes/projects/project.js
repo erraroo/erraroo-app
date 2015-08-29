@@ -17,11 +17,6 @@ export default Authenticated.extend({
       this.currentModel.save().then(success, error);
     },
 
-    mute(error) {
-      error.toggleProperty('muted');
-      error.save();
-    },
-
     deleteProject() {
       if (confirm('Are you sure you want to delete this project?')) {
         const that = this;

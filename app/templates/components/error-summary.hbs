@@ -1,22 +1,12 @@
 {{#link-to "projects.project.error.events" error.id}}
   <div class="error-header">
-
-    <strong>{{error.name}}</strong>
-
-    <span class="error-occurrences pull-right">
-      {{#if error.muted}}
-        <span class="glyphicon glyphicon-volume-off"></span>
-      {{else}}
-        <span class="glyphicon glyphicon-fire"></span>
-      {{/if}}
-
-      {{error.occurrences}}
-    </span>
-  </div>
-  <div class="error-body">
     <div class="pull-right">
+      {{mute-button error=error}}
       {{status-button error=error}}
     </div>
+    <strong>{{error.name}}</strong>
+  </div>
+  <div class="error-body">
     <span class="error-message">
       {{#if error.message}}
         {{error.message}}
@@ -27,7 +17,7 @@
   </div>
   <div class="error-footer">
     <span class="error-last-seen-at text-muted text-sm">
-      Last seen {{time-ago error.lastSeenAt}}.
+      Seen {{error.occurrences}} {{pluralize 'time' error.occurrences}} and last seen {{time-ago error.lastSeenAt}}.
     </span>
   </div>
 

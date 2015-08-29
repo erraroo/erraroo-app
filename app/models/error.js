@@ -11,11 +11,12 @@ export default DS.Model.extend({
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   muted: DS.attr('boolean'),
-  isJustUpdated: false,
 
-  flagAsNew: function() {
+  seen: true,
+
+  flag: function() {
     if (!this.get('resolved')) {
-      this.set('isJustUpdated', true);
+      this.set('seen', false);
     }
   },
 
@@ -23,7 +24,7 @@ export default DS.Model.extend({
     if (!this.get('resolved')) {
       this.setProperties({
         resolved: true,
-        isJustUpdated: false,
+        seen: true,
       });
 
       this.save();
