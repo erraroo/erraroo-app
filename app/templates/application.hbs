@@ -1,5 +1,7 @@
 {{#if currentUser.user}}
-  {{#fade-in}}{{partial 'header'}}{{/fade-in}}
+  {{partial 'navbar'}}
+{{else}}
+  <img src="images/erraroo.png" alt="erraro" id="logo">
 {{/if}}
 <div class="flash-messages">
   {{#each flashMessages.queue as |flash|}}

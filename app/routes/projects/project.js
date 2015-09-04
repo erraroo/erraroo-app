@@ -22,7 +22,7 @@ export default Authenticated.extend({
         const that = this;
         this.currentModel.destroyRecord().then(function() {
           that.transitionTo('index');
-          that.get('flashMessages').success('That terrible project was destroyed!');
+          that.get('flashMessages').success('That mean old crufty project was destroyed!');
         });
       }
     },

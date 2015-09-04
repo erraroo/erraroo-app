@@ -1,0 +1,24 @@
+#logo {
+  width: 125px;
+  height: 25px;
+
+  position: fixed;
+  top: 4px;
+  left: 10px;
+}
+
+.opener {
+  text-align: center;
+
+  h1 {
+    color: $brand-primary;
+    font-size: 22px;
+  }
+
+  p {
+    color: $text-muted;
+  }
+
+  margin-bottom: 40px;
+}
+

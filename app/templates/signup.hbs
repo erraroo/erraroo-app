@@ -1,15 +1,11 @@
 <div class="container signup">
+  <div class="opener">
+    <h1>Create a New Account</h1>
+    <p>Come on in, the little kangaroo doesn't bite!</p>
+  </div>
   <div class="row">
-    <div class="col-md-6">
-      <div class="header-signup">
-        <h1>Create a New Account</h1>
-        <p>Come on in, the little kangaroo doesn't bite!</p>
-        <br>
-        <img src="images/erraroo.png" alt="erraro" id="signup-logo">
-      </div>
-    </div>
-    <div class="col-md-4">
-      <form class="form-signup">
+    <div class="col-md-4 col-md-offset-4">
+      <form class="form-signup box">
         {{#if message}}
           <div class="alert alert-danger">
             {{message}}
@@ -29,7 +25,7 @@
         </div>
 
         <div class="form-actions">
-          <button class="btn btn-primary" type="submit" {{action "signup"}}>Create Account</button>
+          <button class="btn btn-primary" type="submit" {{action "signup"}}>Create My New Account</button>
         </div>
       </form>
 
