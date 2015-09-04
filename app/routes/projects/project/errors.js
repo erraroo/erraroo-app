@@ -7,11 +7,6 @@ export default Authenticated.extend({
       replace: true,
     },
 
-    library: {
-      refreshModel: true,
-      replace: true,
-    },
-
     page: {
       refreshModel: true,
       replace: true,
@@ -22,7 +17,6 @@ export default Authenticated.extend({
     return this.store.query('error', {
       project_id: this.modelFor('projects.project').get('id'),
       status: params.status,
-      library: params.library,
       page: params.page,
     });
   },

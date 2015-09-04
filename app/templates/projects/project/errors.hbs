@@ -11,12 +11,6 @@
       </ul>
     </div>
 
-    {{#if library}}
-      {{#link-to (query-params library=null)}}
-        Clear lib
-      {{/link-to}}
-    {{/if}}
-
     <button class="btn btn-success pull-right btn-xs" {{action "resolveAllErrors"}}>Resolve All</button>
   </div>
 

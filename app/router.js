@@ -28,8 +28,6 @@ export default Router.map(function() {
         });
       });
 
-      this.route('libraries');
-
       this.route('error', { path: '/error/:error_id'}, function() {
         this.route('events', { path: '/events' }, function() {
           this.route('event', { path: '/:offset' }, function() {
