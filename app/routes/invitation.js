@@ -9,4 +9,11 @@ export default Ember.Route.extend({
     this._super(controller, model);
     controller.set('email', model.get('address'));
   },
+
+  actions: {
+    error() {
+      console.log('errrrr');
+      this.transitionTo('invitation-not-found');
+    }
+  }
 });
