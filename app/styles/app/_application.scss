@@ -22,3 +22,15 @@
   margin-bottom: 40px;
 }
 
+.page-header {
+  h1 {
+    color: $brand-primary;
+    font-size: 22px;
+    line-height: 34px;
+  }
+
+  .buttons {
+    float: right;
+    line-height: 34px;
+  }
+}

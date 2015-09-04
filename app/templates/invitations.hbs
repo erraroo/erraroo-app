@@ -1,16 +1,22 @@
 <div class="container">
   <div class="page-header">
+    <div class="buttons">
+      {{#link-to "invite" class="btn btn-primary btn-xs"}}
+        Invite a new user
+      {{/link-to}}
+    </div>
     <h1>Invitations</h1>
   </div>
 
-  <table class="table table-stripped">
+  <table class="table table-stripped box">
     <thead>
       <tr>
         <th>Address</th>
         <th>Invited By</th>
         <th>Accepted</th>
         <th>Created</th>
-        <th>Updated</th>
+        <th>Link</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -19,9 +25,19 @@
         <td>{{i.address}}</td>
         <td>{{i.user.email}}</td>
         <td>{{i.accepted}}</td>
-        <td>{{i.createdAt}}</td>
-        <td>{{i.updatedAt}}</td>
+        <td>{{time-ago i.createdAt}}</td>
         <td>{{#link-to "invitation" i.id}}{{i.id}}{{/link-to}}</td>
+        <td>
+          <button class="btn btn-default btn-xs" {{action "deleteInvitation" i}}>
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </td>
+      </tr>
+      {{else}}
+      <tr>
+        <td colspan="6">
+          <h1 class="empty-message">no invitations</h1>
+        </td>
       </tr>
       {{/each}}
     </tbody>

@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
-    <div class=page-header>
-      <h2>Invite a new user</h2>
+    <div class="opener">
+      <h1>Invite a new user</h1>
     </div>
 
-    <form {{action "save" on="submit"}}>
+    <form {{action "save" on="submit"}} class="form-invite box">
       <div class="form-group">
         <label for="email">Email</label>
         {{input value=model.address elementId="address" class="form-control" placeholder="bob@example.com"}}
