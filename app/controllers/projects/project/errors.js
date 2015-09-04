@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
   errorsUpdate: function(error) {
     const model = this.get('model');
     const project = this.get('project');
-    if (Ember.isNone(model) || Ember.isNone(Project)) {
+    if (Ember.isNone(model) || Ember.isNone(project)) {
       return;
     }
 
