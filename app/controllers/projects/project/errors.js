@@ -26,7 +26,12 @@ export default Ember.Controller.extend({
 
   errorsUpdate: function(error) {
     const model = this.get('model');
-    if (Ember.isNone(model)) {
+    const project = this.get('project');
+    if (Ember.isNone(model) || Ember.isNone(Project)) {
+      return;
+    }
+
+    if (project.id !== error.get('project.id')) {
       return;
     }
 
@@ -63,6 +68,6 @@ export default Ember.Controller.extend({
 
     prevPage() {
       this.decrementProperty('page');
-    }
   }
+}
 });

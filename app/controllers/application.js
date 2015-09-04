@@ -6,7 +6,9 @@ export default Ember.Controller.extend({
   project:  Ember.computed.oneWay('p.model'),
   p: Ember.inject.controller('projects/project'),
 
-  projects: function() {
+  projects: Ember.computed.sort('_projects', 'projectsSorting'),
+  projectsSorting: ['name:asc'],
+  _projects: function() {
     return this.store.findAll("project");
   }.property(),
 });
