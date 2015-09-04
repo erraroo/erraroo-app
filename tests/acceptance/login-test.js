@@ -9,7 +9,7 @@ import Pretender from 'pretender';
 
 var application, server;
 
-module('Acceptance: Login', {
+module('Acceptance: Sign In', {
   beforeEach: function() {
     server = new Pretender(defaultRoutes);
     application = startApp();
@@ -43,7 +43,7 @@ test('displays a message with a bad login', function(assert) {
   });
 
   visit('/login');
-  click("button:contains('Login')");
+  click("button:contains('Sign In')");
   andThen(function() {
     assert.equal(currentPath(), 'login');
     assert.equal(find('.message').text().trim(), 'invalid email or password');
@@ -68,7 +68,7 @@ test('signs the user in', function(assert) {
   visit('/login');
   fillIn('#email', 'bob@example.com');
   fillIn('#password', 'password');
-  click("button:contains('Login')");
+  click("button:contains('Sign In')");
 
   andThen(function() {
     assert.equal(currentURL(), '/projects/1/errors', 'should see their current errors');
@@ -79,7 +79,7 @@ test('redirects to the page we tried to view after we login', function(assert) {
   visit('/sandbox');
   fillIn('#email', 'bob@example.com');
   fillIn('#password', 'password');
-  click('button:contains("Login")');
+  click('button:contains("Sign In")');
 
   andThen(function() {
     assert.equal(currentPath(), 'sandbox');

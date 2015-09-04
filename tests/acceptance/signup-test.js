@@ -21,7 +21,7 @@ const page = {
   },
 
   submit() {
-   click("button:contains('Create Account')");
+   click("button:contains('Create My New Account')");
   }
 };
 
