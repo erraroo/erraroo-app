@@ -2,11 +2,12 @@
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
       <div class="projects new">
-        <div class="page-header">
-          <h1>New Project</h1>
+        <div class="opener">
+          <h1>Create New Project</h1>
+          <p>Ohh, exciting new project time</p>
         </div>
 
-        <form {{action "save" on="submit"}} role="form">
+        <form {{action "save" on="submit"}} role="form" class="form-project box">
           <div class="form-group {{if model.errors.name 'has-error'}}">
             <label for="name" class="control-label">Name</label>
             {{input elementId="name" value=model.name class="form-control"}}
