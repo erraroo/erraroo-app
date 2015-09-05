@@ -7,8 +7,8 @@ $avatar-size: 28px;
   border: 2px solid $brand-primary;
 }
 
-.navbar-user {
+.navbar-user, .project-dropdown {
   li a {
-    padding: 4px 10px;
+    padding: 10px;
   }
 }

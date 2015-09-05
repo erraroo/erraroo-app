@@ -2,11 +2,6 @@
   cursor: pointer;
 }
 
-.navbar-brand {
-  padding: 4px;
-  padding-left: 10px;
-}
-
 .navbar-default {
   .navbar-toggle {
     border: none;
@@ -99,6 +94,10 @@
 }
 
 .navbar-fixed-top {
-  border-width: 0 0 3px;
+  /*border-width: 0 0 3px;*/
+}
+
+.navbar .navbar-brand {
+  padding: 10px;
 }
 
