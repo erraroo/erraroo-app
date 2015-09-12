@@ -3,6 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   puller: Ember.inject.service('puller'),
+  currentUser: Ember.inject.service('current-user'),
 
   activate() {
     this._super();

@@ -1,6 +1,6 @@
 <div class="form-group">
   <label for="email-on-error">
-    {{input type="checkbox" checked=session.user.pref.emailOnError elementId="email-on-error"}}
+    {{input type="checkbox" checked=(mut model.pref.emailOnError) elementId="email-on-error"}}
     Email notifcations when an error occurs?
   </label>
 
