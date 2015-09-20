@@ -4,7 +4,7 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     fingerprint: {
-      prepend: 'https://1bbicx3ding66.cloudfront.net/'
+      prepend: 'https://d1bbicx3ding66.cloudfront.net/'
     },
 
     sourcemaps: {
