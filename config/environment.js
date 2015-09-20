@@ -86,7 +86,7 @@ module.exports = function(environment) {
     ENV.apiHost = 'https://api.erraroo.com';
     ENV.favicon = 'https://d1bbicx3ding66.cloudfront.net/favicon.ico';
     ENV.ErrarooENV = {
-      token: '97fpJYkCg4GRoNHywk04Fw',
+      token: 'iktoktbvplc9SNsHSizQrw',
       endpoint: 'https://api.erraroo.com/api/v1/events',
     };
   }
