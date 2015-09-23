@@ -6,15 +6,19 @@ const endpoint = config.apiHost + '/api/v1/sessions';
 const restoreEndpoint = config.apiHost + '/api/v1/users/me';
 
 export default Base.extend({
+  cu: Ember.inject.service('current-user'),
+
   authenticate: function(data) {
+    const service = this.get('cu');
     const that = this;
+
     return new Ember.RSVP.Promise(function(resolve, reject) {
       that.ajax(endpoint, 'POST', data).then(function(response) {
-        Ember.run(this, resolve, response);
-
         const userID = `${response.userID}`;
-        const cu = that.container.lookup('service:current-user');
-        Ember.run(cu, 'authenticated', userID);
+        const token  = `${response.token}`;
+
+        Ember.run(this, resolve, response);
+        Ember.run(service, 'authenticated', userID, token);
       }, function(xhr /*, status, error*/) {
         reject(xhr.responseJSON || xhr.responseText);
       });

@@ -5,9 +5,10 @@ const {
   run,
   set,
   get,
-  inject
+  inject,
+  computed
 } = Ember;
-
+const { oneWay } = computed;
 const max = 30000;
 const norm = 500;
 
@@ -19,7 +20,8 @@ let request = null;
 const channels = {};
 
 export default Ember.Service.extend(Ember.Evented, {
-  session: inject.service('session'),
+  cu: inject.service('current-user'),
+  token: computed.alias('cu.token'),
 
   on(channel, target, method) {
     if (!this.has(channel)) {
@@ -90,7 +92,7 @@ export default Ember.Service.extend(Ember.Evented, {
       data: channels,
       contentType: 'application/json',
       headers: {
-        'Authorization': this.get('session.data.secure.token'),
+        'Authorization': this.get('token'),
         'X-No-Loggy': true,
       },
 
