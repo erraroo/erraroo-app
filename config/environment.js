@@ -75,7 +75,7 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
 
-    ENV['simple-auth'] = {
+    ENV['ember-simple-auth'] = {
       base: {
         store: 'session-store:ephemeral',
       },

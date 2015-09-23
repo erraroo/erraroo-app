@@ -7,11 +7,6 @@ const { inject } = Ember;
 export default Ember.Route.extend(ApplicationRouteMixin, {
   currentUser: inject.service('current-user'),
   puller: inject.service('puller'),
-  //session: inject.service('session'),
-
-  beforeModel() {
-    console.log('beforeModel', this.get('session'));
-  },
 
   activate: function() {
     this.get('puller').on('global', this, 'onGlobalEvent');
