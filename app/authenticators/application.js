@@ -8,7 +8,7 @@ const restoreEndpoint = config.apiHost + '/api/v1/users/me';
 export default Base.extend({
   cu: Ember.inject.service('current-user'),
 
-  authenticate: function(data) {
+  authenticate(data) {
     const service = this.get('cu');
     const that = this;
 
@@ -25,11 +25,13 @@ export default Base.extend({
     });
   },
 
-  invalidate: function() {
+  invalidate() {
     return this.ajax(endpoint, 'DELETE');
   },
 
-  restore: function(data) {
+  restore(data) {
+    console.log('restore', ...arguments);
+
     const that = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
       if (data && Ember.isEmpty(data.token)) {

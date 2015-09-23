@@ -8,7 +8,7 @@ const {
   inject,
   computed
 } = Ember;
-const { oneWay } = computed;
+
 const max = 30000;
 const norm = 500;
 
