@@ -30,8 +30,9 @@ export default Base.extend({
   },
 
   restore(data) {
-    console.log('restore', ...arguments);
+    console.log('MY RESTORE', ...arguments);
 
+    const cu = this.get('cu');
     const that = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
       if (data && Ember.isEmpty(data.token)) {
@@ -44,10 +45,7 @@ export default Base.extend({
         Ember.run(store, 'pushPayload', payload);
 
         data.userID = userID;
-        resolve(data);
         Ember.run(this, resolve, data);
-
-        const cu = that.container.lookup('service:current-user');
         Ember.run(cu, 'authenticated', userID);
       }, function() {
         reject();
