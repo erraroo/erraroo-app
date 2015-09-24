@@ -9,5 +9,17 @@ export default Ember.Component.extend({
 
   formatedTimestamp: computed('timestamp', function() {
     return moment(this.get('timestamp')).format("YYYY MM hh:mm:ss");
+  }),
+
+  componentName: computed('payload.event', function() {
+    const event = this.get('payload.event');
+    switch(event) {
+      case 'error':
+        return 'log-entry/error-entry';
+      case 'didTransition':
+        return 'log-entry/did-transition';
+      case 'willTransition':
+        return 'log-entry/will-transition';
+    }
   })
 });
