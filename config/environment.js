@@ -54,12 +54,11 @@ module.exports = function(environment) {
      //ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
      //ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    //ENV.ErrarooENV = {
-      //debug: true,
-      ////token: 'o3IMbJSn5T9RsIDSLALDqQ',
-      //token: 'ct96X9wDhDLXBZugIvp_fg',
-      //endpoint: 'http://localhost:3000/api/v1/events',
-    //};
+    ENV.ErrarooENV = {
+      debug: true,
+      token: 'ct96X9wDhDLXBZugIvp_fg',
+      endpoint: 'http://localhost:3000/api/v1/events',
+    };
   }
 
   if (environment === 'test') {
