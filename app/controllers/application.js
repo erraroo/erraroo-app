@@ -11,5 +11,15 @@ export default Ember.Controller.extend({
   _projects: function() {
     return this.store.findAll("project");
   }.property(),
+
+  projectMenuPath: Ember.computed('currentPath', function() {
+    const currentPath = this.get('currentPath');
+
+    if (currentPath.indexOf('.event.') > -1) {
+      return 'projects.project.errors.index';
+    }
+
+    return currentPath;
+  })
 });
 

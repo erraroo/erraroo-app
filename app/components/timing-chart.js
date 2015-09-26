@@ -4,7 +4,11 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: 'timing-chart',
 
-  didInsertElement:function() {
+  timingsChanged: Ember.observer('timings', function() {
+    this.drawTimingsChart();
+  }),
+
+  drawTimingsChart: Ember.on('didInsertElement', function() {
     const events = [
      'unloadEventTime',
      'redirectTime',
@@ -42,5 +46,5 @@ export default Ember.Component.extend({
         }
       },
     });
-  },
+  }),
 });
