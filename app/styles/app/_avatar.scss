@@ -10,5 +10,10 @@ $avatar-size: 28px;
 .navbar-user, .project-dropdown {
   li a {
     padding: 10px;
+
+    &.active {
+      background: $brand-primary;
+      color: white;
+    }
   }
 }

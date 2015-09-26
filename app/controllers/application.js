@@ -13,10 +13,15 @@ export default Ember.Controller.extend({
   }.property(),
 
   projectMenuPath: Ember.computed('currentPath', function() {
+    const defaultPath = 'projects.project.errors.index';
     const currentPath = this.get('currentPath');
 
+    if (currentPath.indexOf('projects.project.') === -1) {
+      return defaultPath;
+    }
+
     if (currentPath.indexOf('.event.') > -1) {
-      return 'projects.project.errors.index';
+      return defaultPath;
     }
 
     return currentPath;

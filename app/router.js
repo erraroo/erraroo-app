@@ -10,6 +10,7 @@ export default Router.map(function() {
     this.route('new');
     this.route('project', {path: '/:project_id'}, function(){
       this.route('config');
+      this.route('install');
       this.route('performance', { path: '/performance'}, function() {
 
       });

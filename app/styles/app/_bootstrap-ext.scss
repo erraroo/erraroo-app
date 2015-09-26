@@ -50,6 +50,11 @@
   color: $navbar-default-link-active-color;
 }
 
+.navbar-default .navbar-nav > li > a.active {
+  border-bottom: 3px solid $brand-primary;
+  color: $brand-primary;
+}
+
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
   background: none;
   color: #333;

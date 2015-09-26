@@ -47,10 +47,22 @@
             Errors
           {{/link-to}}
         </li>
-        <li>{{#link-to "projects.project.performance" project}}Perfomance{{/link-to}}</li>
         <li>
-          {{#link-to "projects.project.config" project class="pull-right"}}
+          {{#link-to "projects.project.performance" project}}
+            <span class="glyphicon glyphicon-stats"></span>
+            Perfomance
+          {{/link-to}}
+        </li>
+        <li>
+          {{#link-to "projects.project.config" project}}
             <span class="glyphicon glyphicon-cog"></span>
+            Settings
+          {{/link-to}}
+        </li>
+        <li>
+          {{#link-to "projects.project.install" project}}
+            <span class="glyphicon glyphicon-gift"></span>
+            Install
           {{/link-to}}
         </li>
       </ul>

@@ -23,5 +23,9 @@ module.exports = function(defaults) {
   app.import('bower_components/c3/c3.js');
   app.import('bower_components/c3/c3.css');
 
+  // js, bash, json, markdown code highlighting
+  app.import('vendor/highlight/highlight.pack.js');
+  app.import('vendor/highlight/styles/solarized_light.css');
+
   return app.toTree();
 };
