@@ -45,6 +45,13 @@ module.exports = function(environment) {
     ],
   };
 
+  ENV['ember-cli-erraroo'] = {
+    debug: true,
+    enabled: true,
+    token: 'ct96X9wDhDLXBZugIvp_fg',
+    endpoint: 'http://localhost:3000/api/v1/events',
+  };
+
   if (environment === 'development') {
     ENV.defaultPollIntervalSeconds = 5;
 
@@ -53,12 +60,6 @@ module.exports = function(environment) {
      //ENV.APP.LOG_TRANSITIONS = true;
      //ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
      //ENV.APP.LOG_VIEW_LOOKUPS = true;
-
-    ENV.ErrarooENV = {
-      debug: true,
-      token: 'ct96X9wDhDLXBZugIvp_fg',
-      endpoint: 'http://localhost:3000/api/v1/events',
-    };
   }
 
   if (environment === 'test') {
@@ -84,9 +85,8 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.apiHost = 'https://api.erraroo.com';
     ENV.favicon = 'https://d1bbicx3ding66.cloudfront.net/favicon.ico';
-    ENV.ErrarooENV = {
+    ENV['ember-cli-erraroo'] = {
       token: 'iktoktbvplc9SNsHSizQrw',
-      endpoint: 'https://api.erraroo.com/api/v1/events',
     };
   }
 

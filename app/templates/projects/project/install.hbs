@@ -3,10 +3,21 @@
     <div class="opener">
       <h1>Installation Instructions</h1>
     </div>
-{{#highlight-code lang="bash"}}$ ember install ember-cli-erraroo{{/highlight-code}}
+
+    <h2>Step 1</h2>
+    <p>Install addon into you your ember app.</p>
+    {{#highlight-code lang="bash"}}$ ember install ember-cli-erraroo{{/highlight-code}}
+
+    <hr>
+
+    <h2>Step 2</h2>
+    <p>Include the erraroo token in your config file.</p>
+
 {{#highlight-code lang="javascript" model=model}}// config/environment.js
 ENV['ember-cli-erraroo'] = {
   token: '{{model.token}}',
 };{{/highlight-code}}
+
+    <p>See the <a href='#todo'>Documenation</a> for more config options</p>
   </div>
 </div>
