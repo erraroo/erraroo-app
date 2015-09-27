@@ -58,8 +58,10 @@ test('creating a project', function(assert) {
   click("button:contains('Create Project')");
 
   andThen(function() {
-    assert.equal(currentURL(), '/projects/1/config', 'redirects to the projects configuration page');
-    assert.equal(find('#project-token').text().trim(), 'PROJECT-TOKEN-1', 'it shows the token to the user');
+    assert.equal(currentURL(), '/projects/1/install', 'redirects to the projects install page');
+
+    const js = find('.hljs.javascript').text().trim();
+    assert.ok(js.indexOf('PROJECT-TOKEN-1') > -1, 'displays the project token');
   });
 });
 

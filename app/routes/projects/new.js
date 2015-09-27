@@ -8,17 +8,10 @@ export default Authenticated.extend(CleanUpModel, {
 
   actions: {
     save: function() {
-      const that = this;
-
-      function success(model) {
-        that.transitionTo('projects.project.config', model);
-      }
-
-      function error(e) {
-        console.log('error', e);
-      }
-
-      this.currentModel.save().then(success, error);
+      this.currentModel.save().then(
+        (model) => this.transitionTo('projects.project.install', model),
+        () => console.error(...arguments)
+      );
     }
   }
 });
