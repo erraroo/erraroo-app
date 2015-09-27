@@ -4,6 +4,8 @@ import config from 'erraroo/config/environment';
 export default Ember.Controller.extend({
   email: '',
   password: '',
+  plan: 'default',
+  queryParams: ['plan'],
   session: Ember.inject.service('session'),
 
   actions: {
@@ -32,6 +34,7 @@ export default Ember.Controller.extend({
       Signup: {
         Email:    this.get('email'),
         Password: this.get('password'),
+        Plan:     this.get('plan'),
       }
     };
   },
