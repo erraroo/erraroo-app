@@ -16,17 +16,7 @@ export default Router.map(function() {
       });
 
       this.route('errors', { path: '/errors'}, function() {
-        this.route('error', { path: '/:error_id'}, function() {
-          this.route('events', { path: '/events' }, function() {
-            this.route('latest');
-            this.route('event', { path: '/:event_id' }, function() {
-              this.route('stack');
-              this.route('plugins');
-              this.route('userdata');
-              this.route('logs');
-            });
-          });
-        });
+
       });
 
       this.route('error', { path: '/error/:error_id'}, function() {
