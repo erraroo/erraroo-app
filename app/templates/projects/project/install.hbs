@@ -19,5 +19,17 @@ ENV['ember-cli-erraroo'] = {
 };{{/highlight-code}}
 
     <p>See the <a href='#todo'>Documenation</a> for more config options</p>
+
+    <hr>
+
+    <h2>Step 3</h2>
+    <p>Enanable source maps so that you can see stack traces with your errors.</p>
+{{#highlight-code lang="javascript" model=model}}// ember-cli-build.js
+var app = new EmberApp(defaults, {
+  sourcemaps: {
+    enabled: true,
+  },
+});{{/highlight-code}}
+
   </div>
 </div>
