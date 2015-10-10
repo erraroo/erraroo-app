@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import Authenticated from 'erraroo/routes/authenticated';
 
 export default Authenticated.extend({
@@ -10,7 +11,7 @@ export default Authenticated.extend({
     page: {
       refreshModel: true,
       replace: true,
-    }
+    },
   },
 
   model: function(params) {
@@ -27,12 +28,14 @@ export default Authenticated.extend({
 
   actions: {
     resolveAllErrors() {
-      const controller = this.controllerFor('projects/project/errors');
-      controller.get('model').invoke('resolve');
+      const promises = this.currentModel.map(function(error) {
+        return error.resolve();
+      });
+
+      Ember.RSVP.allSettled(promises).then(() => this.refresh());
     },
 
     changeStatus(status) {
-      console.log("changeStatus", status, 'things');
       this.transitionTo({queryParams: { status: status} });
     },
   }

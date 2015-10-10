@@ -27,7 +27,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     },
 
     error() {
-      // this will redirect to an error page
       return true;
     },
 

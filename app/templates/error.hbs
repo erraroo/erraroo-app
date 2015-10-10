@@ -1,1 +1,7 @@
 <h1>{{model}}</h1>
+
+<ul class="errors">
+{{#each model.errors as |error|}}
+  <li>{{error.status}} - {{error.title}}: {{error.detail}}</li>
+{{/each}}
+</ul>

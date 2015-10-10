@@ -8,16 +8,11 @@ export default Base.extend({
     let message = '';
     const payload = this.get('payload');
 
-    console.log(payload);
-
     Object.keys(payload).forEach(function(key) {
       const value = get(payload, key);
-      message += `${key}=${value} `;
+      message += `<strong>${key}</strong>=${value} `;
     });
 
-    return JSON.stringify(payload);
-
-
-    return message;
+    return new Ember.Handlebars.SafeString(message);
   })
 });

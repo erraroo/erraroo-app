@@ -44,4 +44,5 @@ export default Router.map(function() {
   this.route('invitation', { path: '/invitation/:token' });
   this.route('invitation-not-found', { path: '/invitation/not-found' });
   this.route('invite');
+  this.route('error404');
 });

@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -27,7 +28,9 @@ export default DS.Model.extend({
         seen: true,
       });
 
-      this.save();
+      return this.save();
     }
+
+    return Ember.RSVP.resolve();
   }
 });
