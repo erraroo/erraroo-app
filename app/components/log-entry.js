@@ -20,6 +20,8 @@ export default Ember.Component.extend({
         return 'log-entry/did-transition';
       case 'willTransition':
         return 'log-entry/will-transition';
+      default:
+        return 'log-entry/json-entry';
     }
   })
 });

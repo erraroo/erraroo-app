@@ -8,8 +8,12 @@
       <a href="{{attrs.event.json.url}}">{{attrs.event.json.url}}</a>
     </p>
 
-    {{#if attrs.event.json.processed}}
+    {{#if attrs.event.hasStackTrace}}
+      <h4>Stack Trace</h4>
       {{stack-trace trace=attrs.event.json.trace}}
+    {{else}}
+      <h4>Logs</h4>
+      {{event-log event=attrs.event}}
     {{/if}}
   </div>
   <div class="col-md-4">

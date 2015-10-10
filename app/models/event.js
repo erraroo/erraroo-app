@@ -12,4 +12,9 @@ export default DS.Model.extend({
     const promise = Ember.$.getJSON(this.get('payloadUrl'));
     return PromistObject.create({promise: promise});
   }.property('payloadUrl'),
+
+  hasStackTrace: Ember.computed('json', function() {
+    const stack = this.get('json.trace.stack');
+    return Ember.isPresent(stack);
+  })
 });
