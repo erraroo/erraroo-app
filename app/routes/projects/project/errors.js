@@ -28,7 +28,8 @@ export default Authenticated.extend({
 
   actions: {
     resolveAllErrors() {
-      const promises = this.currentModel.map(function(error) {
+      const controller = this.controllerFor('projects.project.errors');
+      const promises = controller.get('model').map(function(error) {
         return error.resolve();
       });
 
