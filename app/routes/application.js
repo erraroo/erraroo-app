@@ -26,9 +26,9 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       this.get('session').invalidate();
     },
 
-    error(err, transition) {
-      console.error('TODO: errarro is swallowing this not nicely', err);
-      erraroo.reportApplicationRouteError(err, transition);
+    error() {
+      // this will redirect to an error page
+      return true;
     },
 
     didTransition(/*transition*/) {
