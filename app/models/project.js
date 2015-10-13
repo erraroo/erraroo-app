@@ -8,6 +8,8 @@ export default DS.Model.extend({
   updatedAt: DS.attr('date'),
   unresolvedCount: DS.attr('number'),
 
+  repository: DS.belongsTo('repository', { async: true }),
+
   regenerateToken() {
     const name = this.constructor.modelName;
     const store = this.store;

@@ -36,6 +36,22 @@ export default Authenticated.extend({
           console.error(...arguments);
         });
       }
-    }
+    },
+
+    saveRepository() {
+      const that = this;
+
+      function success(model) {
+        console.log("saved repository", model, that);
+      }
+
+      function error(e) {
+        console.error('error', e);
+      }
+
+      this.currentModel.get('repository').then(function(repo) {
+        return repo.save().then(success, error);
+      });
+    },
   }
 });

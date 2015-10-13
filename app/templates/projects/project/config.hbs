@@ -27,6 +27,26 @@
 
       <hr>
 
+      {{#if model.repository}}
+        <form {{action "saveRepository" on="submit"}}>
+          <div class="form-group {{if model.errors.name 'has-error'}}">
+            <label for="github-org" class="control-tabel">Gitub Organization</label>
+            {{input value=model.repository.githubOrg class="form-control" elementId="github-org"}}
+
+            <label for="github-repo" class="control-tabel">Gitub Repo</label>
+            {{input value=model.repository.githubRepo class="form-control" elementId="github-repo"}}
+          </div>
+
+          <button type="submit" class="btn btn-primary" disabled={{if model.repository.hasDirtyAttributes '' 'disabled'}}>Save</button>
+        </form>
+
+      {{else}}
+      <h4>Add Github Repository</h4>
+      <a href="http://localhost:3000/api/v1/github/connect?project_id={{model.id}}" class="btn btn-default">Connect Github</a>
+      {{/if}}
+
+      <hr>
+
       <h4>Delete Project</h4>
       <button class="btn btn-default" {{action "deleteProject"}}>Delete this project</button>
     </div>
