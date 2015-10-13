@@ -60,6 +60,12 @@
           {{/link-to}}
         </li>
         <li>
+          {{#link-to "projects.project.outdated" project}}
+            <span class="glyphicon glyphicon-calendar"></span>
+            Outdated
+          {{/link-to}}
+        </li>
+        <li>
           {{#link-to "projects.project.install" project}}
             <span class="glyphicon glyphicon-gift"></span>
             Install
