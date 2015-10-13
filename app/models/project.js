@@ -9,7 +9,7 @@ export default DS.Model.extend({
   unresolvedCount: DS.attr('number'),
 
   repository: DS.belongsTo('repository', { async: true }),
-  outdatedRevisions: DS.belongsTo('outdated-revision', { async: true }),
+  outdatedRevisions: DS.hasMany('outdated-revision', { async: true }),
 
   regenerateToken() {
     const name = this.constructor.modelName;
