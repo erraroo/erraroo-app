@@ -53,5 +53,13 @@ export default Authenticated.extend({
         return repo.save().then(success, error);
       });
     },
+
+    deleteRepository() {
+      if (alert('Are you sure you want to delete the repository?')) {
+        this.currentModel.get('repository').then(function(repo) {
+          return repo.destroyRecord();
+        });
+      }
+    },
   }
 });
