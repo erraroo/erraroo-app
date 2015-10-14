@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Authenticated from '../authenticated';
+import config from 'erraroo/config/environment';
 
 export default Authenticated.extend({
   actions: {
@@ -55,11 +56,22 @@ export default Authenticated.extend({
     },
 
     deleteRepository() {
-      if (alert('Are you sure you want to delete the repository?')) {
+      if (confirm('Are you sure you want to delete the repository?')) {
         this.currentModel.get('repository').then(function(repo) {
           return repo.destroyRecord();
         });
       }
+    },
+
+    connectGithub() {
+      this.store.createRecord('signed-project-token', {
+        project: this.currentModel
+      }).save().then(function(token) {
+        let url = config.apiHost;
+        url += "/api/v1/github/connect?token=";
+        url += token.get('token');
+        window.location = url;
+      });
     },
   }
 });

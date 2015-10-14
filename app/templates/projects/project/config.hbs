@@ -43,10 +43,11 @@
           <button type="submit" class="btn btn-primary" disabled={{if model.repository.hasDirtyAttributes '' 'disabled'}}>Save</button>
         </form>
 
-        <button class="btn btn-danger" {{action "deleteRepository"}}>Delete Repository</button>
+        <h4>Remove Github Repository</h4>
+        <button class="btn btn-default" {{action "deleteRepository"}}>Remove Github Repository</button>
       {{else}}
         <h4>Add Github Repository</h4>
-        <a href="http://localhost:3000/api/v1/github/connect?project_id={{model.id}}" class="btn btn-default">Connect Github</a>
+        <button class="btn btn-primary" {{action "connectGithub"}}>Connect Github</button>
       {{/if}}
 
       <hr>
