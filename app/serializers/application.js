@@ -2,7 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 function upperCamelize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return str.classify();
 }
 
 export default DS.RESTSerializer.extend({
@@ -19,7 +19,7 @@ export default DS.RESTSerializer.extend({
   },
 
   serializeIntoHash: function(data, type, record, options) {
-    var root = upperCamelize(type.modelName);
+    const root = upperCamelize(type.modelName);
     data[root] = this.serialize(record, options);
   },
 
