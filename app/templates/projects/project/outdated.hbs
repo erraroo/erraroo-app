@@ -1,30 +1,43 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
+      <hr>
+
       {{#each model as |revision|}}
-        <div class="outdated-revision">
-          <h1>{{revision.sha}}</h1>
-          <h2>master</h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Filename</th>
-                <th>Name</th>
-                <th>Your Version</th>
-                <th>Lastest Version</th>
-              </tr>
-            </thead>
-            <tbody>
-            {{#each revision.dependencies as |dep|}}
-              <tr>
-                <td>{{dep.location}}</td>
-                <td>{{dep.name}}</td>
-                <td>{{dep.target}}</td>
-                <td>{{dep.latest}}</td>
-              </tr>
-            {{/each}}
-            </tbody>
-          </table>
+        <div class="revision">
+          <div class="text-muted">
+            Checked branch <code>master</code> on revision <code>{{revision.sha}}</code> {{time-ago revision.updatedAt}} ago
+          </div>
+
+          <div class="revision-dependencies">
+          {{#if revision.dependencies}}
+            <div class="text-danger">Found outdated dependicies</div>
+            <table class="table table-condensed table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Filename</th>
+                  <th>Name</th>
+                  <th>Your Version</th>
+                  <th>Lastest Version</th>
+                </tr>
+              </thead>
+              <tbody>
+              {{#each revision.dependencies as |dep|}}
+                <tr>
+                  <td>{{dep.location}}</td>
+                  <td>{{dep.name}}</td>
+                  <td>{{dep.target}}</td>
+                  <td>{{dep.latest}}</td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          {{else}}
+            <div class="text-success">No outdated dependencies</div>
+          {{/if}}
+          </div>
+
+          <hr>
         </div>
       {{/each}}
     </div>
