@@ -45,7 +45,7 @@
     "ember-deploy-s3-index": "0.4.0",
     "ember-disable-proxy-controllers": "1.0.1",
     "ember-export-application-global": "1.0.5",
-    "ember-simple-auth": "git+https://github.com/simplabs/ember-simple-auth.git#jj-abrams",
+    "ember-simple-auth": "1.0.0",
     "go-rest-adapter": "0.0.1"
   }
 }
