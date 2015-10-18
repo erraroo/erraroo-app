@@ -1,23 +1,13 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import GoRESTAdapter from 'go-rest-adapter/adapter';
 import config from 'erraroo/config/environment';
 
 const { service } = Ember.inject;
 
-export default DS.RESTAdapter.extend({
+export default GoRESTAdapter.extend({
   host: config.apiHost,
   namespace: 'api/v1',
   session: service('session'),
-
-  shouldReloadAll() {
-    //console.log('shouldReloadAll', arguments);
-    return true;
-  },
-
-  shouldBackgroundReloadRecord() {
-    //console.log('shouldBackgroundReloadRecord', arguments);
-    return false;
-  },
 
   ajaxOptions() {
     let hash = this._super(...arguments);
@@ -37,40 +27,10 @@ export default DS.RESTAdapter.extend({
     return hash;
   },
 
-  isInvalid: function(status, headers, payload) {
-    return status === 400 && !Ember.isNone(payload.Errors);
-  },
-
-  _normalizeErrors(payload) {
-    const errors = [];
-    const makeError = this._jsonApiError;
-    Object.keys(payload.Errors).forEach(function(key) {
-      payload.Errors[key].forEach(function(detail) {
-        errors.push(makeError(key, detail));
-      });
-    });
-
-    return errors;
-  },
-
-  _jsonApiError(key, detail) {
-    return {
-      detail: detail,
-      source: {
-        pointer: `data/attributes/${key.camelize()}`,
-      },
-    };
-  },
-
-  handleResponse: function(status, headers, payload) {
+  handleResponse: function(status) {
     if (status === 401) {
       this.get('session').invalidate();
       return true;
-    }
-
-    if (this.isInvalid(status, headers, payload)) {
-      const errors = this._normalizeErrors(payload);
-      return new DS.InvalidError(errors);
     }
 
     return this._super(...arguments);
